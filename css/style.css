@@ -11,13 +11,27 @@ body{
 .container{
     position:absolute;
     left:50%;
-    top: 45px;
     transform:translateX(-50%);
     display: grid;
     background-color: aqua;
     border: 1px solid black;
 }
+.features{
+    /* background-color:red; */
+    margin: .5rem;
+}
 .node{
     border: 1px solid black;
     font-size: .8rem;
+}
+.algo,.output{
+    display: inline;
+    padding: .4rem;
+}
+.algo{
+    outline: none;
+    border: none;
+    color: white;
+    background-color: rgba(48,63,159 ,1);
+    border-radius: 3px;
 }

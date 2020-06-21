@@ -33,13 +33,13 @@ function selectStartToEnd() {
     container.addEventListener('mousedown', e => {
         // console.log(points.startSelected,points.endSelected)
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: 'violet' })
+            Util.set_style(e.target, { backgroundColor: 'rgba(40,53,147 ,1)' })
             points.startSelected = true
             START = e.target.id
             return
         }
         if (points.startSelected && !points.endSelected) {
-            Util.set_style(e.target, { backgroundColor: 'red' })
+            Util.set_style(e.target, { backgroundColor: 'rgba(67,160,71 ,1)' })
             points.endSelected = true
             points.walldrawable = true
             DESTINATION = e.target.id
@@ -144,13 +144,13 @@ function relaxNode(i, neighbours) {
     for (let j = 0; j < neighbours.length; j++) {
         if (NODES[i].dist + 1 <= neighbours[j].dist) {
             neighbours[j].dist = NODES[i].dist + 1
-            neighbours[j].innerHTML = `${neighbours[j].dist}`
+            // neighbours[j].innerHTML = `${neighbours[j].dist}`
     
         }
     }
     
     NODES[i].relaxed = true
-    if (NODES[i] !== NODES[START] && NODES[i] !== NODES[DESTINATION]) Util.set_style(NODES[i], { backgroundColor: 'blue' })
+    if (NODES[i] !== NODES[START] && NODES[i] !== NODES[DESTINATION]) Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)' })
     // if (NODES[i] !== NODES[START] && NODES[i] !== NODES[DESTINATION]) setTimeout(()=>{
     //     Util.set_style(NODES[i], { backgroundColor: 'blue' })
         
@@ -212,7 +212,7 @@ function apply(inp) {
             FOUND_DEST = true
             found = nextNode
             console.log(found.dist)
-            output.innerHTML = `${found.dist}`
+            output.innerHTML = `MINIMUM DISTANCE:${found.dist}`
             found.innerHTML = `${found.dist}`
             findTrack(found)
             return
