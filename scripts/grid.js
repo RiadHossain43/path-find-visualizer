@@ -6,7 +6,12 @@ function generateGrid(container,NODE_SIZE){
     for(var row = 0;row<container.height/NODE_SIZE;row++){
         for(var col = 0;col<container.width/NODE_SIZE;col++ ){
             let node = Util.crtEle('div')
-            {node.row = row ,node.col = col,node.relaxed=false,node.dist=Infinity,node.id= row*container.width/NODE_SIZE+col}
+            {
+                node.row = row ,node.col = col,
+                node.relaxed=false,node.dist=Infinity,
+                node.id= row*container.width/NODE_SIZE+col,
+                node.iswall = false
+            }
             Util.addStyel(node,'node')
             container.append(node)
             NODE.push(node)
@@ -32,6 +37,7 @@ function handleDraw(NODES) {
         node.addEventListener('mouseover',()=>{
             if(mouse.ispressed){
                 Util.set_style(node, { backgroundColor: 'black' })
+                node.iswall = true
             }
         })
         // console.log(node) 
