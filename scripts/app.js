@@ -35,13 +35,13 @@ function selectStartToEnd() {
     container.addEventListener('mousedown', e => {
         // console.log(points.startSelected,points.endSelected)
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: 'rgba(40,53,147 ,1)' })
+            Util.set_style(e.target, { backgroundColor: '#E91E63' })
             points.startSelected = true
             START = e.target.id
             return
         }
         if (points.startSelected && !points.endSelected) {
-            Util.set_style(e.target, { backgroundColor: 'rgba(67,160,71 ,1)' })
+            Util.set_style(e.target, { backgroundColor: '#303F9F' })
             points.endSelected = true
             points.walldrawable = true
             DESTINATION = e.target.id
