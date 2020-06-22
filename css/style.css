@@ -24,7 +24,7 @@ body{
 }
 .node{
     border: 1px solid black;
-    font-size: .8rem;
+    font-size:2rem;
     transition: .3s;
     color: white;
 }
