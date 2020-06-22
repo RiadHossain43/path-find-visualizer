@@ -24,9 +24,7 @@ body{
 }
 .node{
     border: 1px solid black;
-    font-size:2rem;
     transition: .3s;
-    color: white;
 }
 .algo,.output,.credit{
     display: inline;
