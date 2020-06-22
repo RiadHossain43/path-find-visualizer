@@ -66,10 +66,11 @@ function findTrack(node) {
 
     let nextNode = neighbours_dist.shift()
 
-    setTimeout(()=>{
-        Util.set_style(nextNode, { backgroundColor: 'yellow' })   
-    },t+1000)
-    t+=50
+    Util.set_style(nextNode, { backgroundColor: 'yellow' })
+    // setTimeout(()=>{
+    //     Util.set_style(nextNode, { backgroundColor: 'yellow' })   
+    // },t+1000)
+    // t+=50
     if (nextNode.dist == 1) {
         return
     }

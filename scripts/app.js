@@ -25,6 +25,7 @@ Util.set_style(container, {
 let NODES = generateGrid(container, NODE_SIZE)
 console.log(NODES.length)
 
+
 function selectStartToEnd() {
     let points = {
         startSelected: false,
@@ -49,6 +50,7 @@ function selectStartToEnd() {
         }
         if (points.walldrawable) handleDraw(NODES)
     })
+    
 }
 selectStartToEnd()
 

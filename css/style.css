@@ -24,7 +24,7 @@ body{
     border: 1px solid black;
     font-size: .8rem;
 }
-.algo,.output{
+.algo,.output,.credit{
     display: inline;
     padding: .4rem;
 }
@@ -34,4 +34,11 @@ body{
     color: white;
     background-color: rgba(48,63,159 ,1);
     border-radius: 3px;
+}
+.credit{
+    
+}
+a{
+    text-decoration: none;
+    color: darkorange;
 }
