@@ -53,10 +53,10 @@ function handleDraw(NODES) {
             let node = NODES[i]
             if(node == NODES[START]||node==NODES[DESTINATION]) continue
             node.addEventListener('click',()=>{
-                if(mouse.ispressed){
+               
                     Util.set_style(node, { backgroundColor: 'black' })
                     node.iswall = true
-                }
+             
             })
             // console.log(node) 
         }
