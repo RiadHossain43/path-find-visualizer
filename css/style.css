@@ -26,6 +26,7 @@ body{
     border: 1px solid black;
     font-size: .8rem;
     transition: .3s;
+    color: white;
 }
 .algo,.output,.credit{
     display: inline;
