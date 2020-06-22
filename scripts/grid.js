@@ -36,16 +36,30 @@ function handleDraw(NODES) {
             console.log(mouse.ispressed)
        
     })
-    for(var i = 0; i<NODES.length; i++){
-        let node = NODES[i]
-        if(node == NODES[START]||node==NODES[DESTINATION]) continue
-        node.addEventListener('mouseover',()=>{
-            if(mouse.ispressed){
-                Util.set_style(node, { backgroundColor: 'black' })
-                node.iswall = true
-            }
-        })
-        // console.log(node) 
+    if(window.innerWidth>768){
+        for(var i = 0; i<NODES.length; i++){
+            let node = NODES[i]
+            if(node == NODES[START]||node==NODES[DESTINATION]) continue
+            node.addEventListener('mouseover',()=>{
+                if(mouse.ispressed){
+                    Util.set_style(node, { backgroundColor: 'black' })
+                    node.iswall = true
+                }
+            })
+            // console.log(node) 
+        }
+    } else{
+        for(var i = 0; i<NODES.length; i++){
+            let node = NODES[i]
+            if(node == NODES[START]||node==NODES[DESTINATION]) continue
+            node.addEventListener('click',()=>{
+                if(mouse.ispressed){
+                    Util.set_style(node, { backgroundColor: 'black' })
+                    node.iswall = true
+                }
+            })
+            // console.log(node) 
+        }
     }
 }
 export{generateGrid,handleDraw}
