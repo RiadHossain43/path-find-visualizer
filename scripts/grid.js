@@ -38,6 +38,7 @@ function handleDraw(NODES) {
     })
     for(var i = 0; i<NODES.length; i++){
         let node = NODES[i]
+        if(node == NODES[START]||node==NODES[DESTINATION]) continue
         node.addEventListener('mouseover',()=>{
             if(mouse.ispressed){
                 Util.set_style(node, { backgroundColor: 'black' })
