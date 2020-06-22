@@ -49,8 +49,9 @@ function selectStartToEnd() {
             return
         }
         if (points.walldrawable) handleDraw(NODES)
+        // handleDraw(NODES,points.walldrawable)
     })
-    
+    // handleDraw(NODES,points.walldrawable)
 }
 selectStartToEnd()
 

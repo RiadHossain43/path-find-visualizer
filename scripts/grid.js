@@ -24,13 +24,17 @@ function handleDraw(NODES) {
         ispressed: false,
     }
     window.addEventListener('mousedown', e => {
-        mouse.ispressed = true
-        console.log(mouse.ispressed)
+        
+            mouse.ispressed = true
+            console.log(mouse.ispressed)
+        
          
     })
-    window.addEventListener('mouseup', e => {
-        mouse.ispressed = false
-        console.log(mouse.ispressed)
+    window.addEventListener('dblclick', e => {
+       
+            mouse.ispressed = false
+            console.log(mouse.ispressed)
+       
     })
     for(var i = 0; i<NODES.length; i++){
         let node = NODES[i]
