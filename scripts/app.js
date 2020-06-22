@@ -48,7 +48,7 @@ function selectStartToEnd() {
             console.log(NODES[START].id, NODES[DESTINATION].id)
             return
         }
-        if (points.walldrawable) handleDraw(NODES)
+        if (points.walldrawable) handleDraw(container,NODES)
         // handleDraw(NODES,points.walldrawable)
     })
     // handleDraw(NODES,points.walldrawable)
