@@ -160,7 +160,14 @@ function apply(inp) {
         FOUND_DEST = true
         found = nextNode
         console.log(found.dist)
-        output.innerHTML = `MINIMUM DISTANCE:${found.dist}`
+        output.innerHTML = `MINIMUM DISTANCE:<span style="
+                            color:white;
+                            font-size:1rem;
+                            background-color:#3F51B5;
+                            border-radious: 3px;
+                            padding:.5rem;
+                            margin:.3rem;
+                            ">${found.dist}</span>`
         // found.innerHTML = `${found.dist}`
         
         return
