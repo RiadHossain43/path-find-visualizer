@@ -23,6 +23,7 @@ body{
 .node{
     border: 1px solid black;
     font-size: .8rem;
+    transition: .3s;
 }
 .algo,.output,.credit{
     display: inline;
@@ -41,4 +42,14 @@ body{
 a{
     text-decoration: none;
     color: darkorange;
+}
+
+@keyframes relax{
+    0%{
+        background-color: #3949AB;
+    }50%{
+        background-color: #1A237E;
+    }100%{
+        background-color: #3949AB;
+    }
 }

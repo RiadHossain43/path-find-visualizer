@@ -30,7 +30,7 @@ function handleDraw(NODES) {
         
          
     })
-    window.addEventListener('dblclick', e => {
+    window.addEventListener('mouseup', e => { // mouseup
        
             mouse.ispressed = false
             console.log(mouse.ispressed)
