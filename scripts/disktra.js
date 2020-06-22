@@ -26,7 +26,7 @@ function relaxNode(i, neighbours) {
         Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax .35s ease' })
 
     },t+1000) 
-    t+=2
+    t+=1
     
     return neighbours
 }

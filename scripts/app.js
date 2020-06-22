@@ -11,7 +11,7 @@ let DESTINATION = 0
 const container = Util.eleQRY('.container')
 const algo_btn = Util.eleQRY('.algo')
 
-const NODE_SIZE = 20
+const NODE_SIZE = 10
 {
     container.height = Math.floor((window.innerHeight - 50) / NODE_SIZE) * NODE_SIZE
     container.width = Math.floor((window.innerWidth - 20) / NODE_SIZE) * NODE_SIZE
