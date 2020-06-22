@@ -17,6 +17,7 @@ body{
     display: grid;
     background-color: aqua;
     border: 1px solid black;
+    cursor: pointer;
 }
 .features{
     /* background-color:red; */
