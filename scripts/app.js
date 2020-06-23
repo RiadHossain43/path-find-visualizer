@@ -32,6 +32,7 @@ function selectStartToEnd() {
         endSelected: false,
         walldrawable: false
     }
+    
     container.addEventListener('mousedown', e => {
         // console.log(points.startSelected,points.endSelected)
         if (!points.startSelected) {
@@ -41,16 +42,19 @@ function selectStartToEnd() {
             return
         }
         if (points.startSelected && !points.endSelected) {
-            Util.set_style(e.target, { backgroundColor: '#303F9F' })
-            points.endSelected = true
-            points.walldrawable = true
-            DESTINATION = e.target.id
-            console.log(NODES[START].id, NODES[DESTINATION].id)
-            return
+            if(e.target!==NODES[START]){
+                Util.set_style(e.target, { backgroundColor: '#303F9F' })
+                points.endSelected = true
+                points.walldrawable = true
+                DESTINATION = e.target.id
+                console.log(NODES[START].id, NODES[DESTINATION].id)
+                return 
+            }
         }
         if (points.walldrawable) handleDraw(container,NODES)
         // handleDraw(NODES,points.walldrawable)
     })
+
     // handleDraw(NODES,points.walldrawable)
 }
 selectStartToEnd()

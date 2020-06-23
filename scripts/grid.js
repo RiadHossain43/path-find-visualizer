@@ -23,19 +23,18 @@ function handleDraw(container, NODES) {
     let mouse = {
         ispressed: false,
     }
-    window.addEventListener('mousedown', e => {
+    // window.addEventListener('mousedown', e => {
 
-        mouse.ispressed = true
-        console.log(mouse.ispressed)
+    //     mouse.ispressed = true
+    //     console.log(mouse.ispressed)
 
+    // })
+    // window.addEventListener('mouseup', e => { // mouseup
 
-    })
-    window.addEventListener('mouseup', e => { // mouseup
+    //     mouse.ispressed = false
+    //     console.log(mouse.ispressed)
 
-        mouse.ispressed = false
-        console.log(mouse.ispressed)
-
-    })
+    // })
     window.addEventListener('touchstart', e => {
 
         mouse.ispressed = true
@@ -51,6 +50,7 @@ function handleDraw(container, NODES) {
     if (window.innerWidth > 768) {
         for (var i = 0; i < NODES.length; i++) {
             let node = NODES[i]
+
             if (node == NODES[START] || node == NODES[DESTINATION]) continue
             node.addEventListener('mouseover', () => {
                 if (mouse.ispressed) {
@@ -61,18 +61,15 @@ function handleDraw(container, NODES) {
             // console.log(node) 
         }
     } else {
-        for (var i = 0; i < NODES.length; i++) {
-            let node = NODES[i]
-            if (node == NODES[START] || node == NODES[DESTINATION]) continue
-            node.addEventListener('click', (e) => {
-                console.log(e.target)
-                // if (mouse.ispressed) {
-                    Util.set_style(node, { backgroundColor: 'black' })
-                    node.iswall = true
-                // }
-            })
-            // console.log(node) 
-        }
+        let ele
+        container.addEventListener('touchmove', (e) => {
+            console.log('moving')
+            // console.log(e.touches[0].clientX,e.touches[0].clientY)
+            ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
+            console.log(ele)
+            Util.set_style(ele, { backgroundColor: 'black' })
+            ele.iswall = true
+        })
     }
 }
 export { generateGrid, handleDraw }
