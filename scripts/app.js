@@ -38,7 +38,7 @@ function selectStartToEnd() {
         }
         if (points.startSelected && !points.endSelected) {
             if(e.target!==NODES[START]){
-                Util.set_style(e.target, { backgroundColor: '#303F9F' })
+                Util.set_style(e.target, { backgroundColor: '#EF6C00' })
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
