@@ -13,6 +13,7 @@ body{
 .container{
     position:absolute;
     left:50%;
+    height: 85%;
     transform:translateX(-50%);
     display: grid;
     background-color: aqua;
@@ -22,10 +23,15 @@ body{
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;
+    margin: auto 0;
 }
 .features{
     /* background-color:red; */
     margin: .5rem;
+}
+.how{
+    cursor: pointer;
+    color: coral;
 }
 .node{
     border: 1px solid black;
@@ -39,7 +45,7 @@ body{
     display: inline;
     padding: .4rem;
 }
-.algo{
+.algo,.back{
     outline: none;
     border: none;
     color: white;
@@ -51,8 +57,11 @@ body{
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;
 }
+.back{
+    padding: .4rem;  
+}
 .credit{
-    
+    line-height: 1.5;
 }
 a{
     text-decoration: none;
@@ -61,7 +70,41 @@ a{
     border-radius: 3px ;
     background-color: #3F51B5;
 }
+.instructions{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 0%;
+    width: 90%;
+    background-color: rgba(0, 0, 0,.85);
+    display: none;
+    padding: 1rem;
+    transition: .4s;
+    overflow: hidden;
+}
 
+.steps{
+    color: white;
+    padding:0 3rem;
+    font-size: 1.5rem;
+}
+.step{
+    margin: .5rem 0;
+}
+video{
+    position: relative;
+    height: 50%;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 1rem;
+}
+.video_des{
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
 @keyframes relax{
     0%{
         background-color: #3949AB;
@@ -69,5 +112,29 @@ a{
         background-color: #1A237E;
     }100%{
         background-color: #3949AB;
+    }
+}
+
+@media screen and (max-width:768px){
+    body{
+       font-size: .8rem;
+    }
+    .credit{
+        display: block;
+        padding: .4rem;
+    }
+    a{
+        padding: .2rem;
+    }
+    .steps{
+        padding:0 1rem;
+        font-size: 1rem;
+    }
+    video{
+        height: auto;
+        width: 96%;
+    }
+    .video_des{
+        font-size: 1rem;
     }
 }

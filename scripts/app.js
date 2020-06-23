@@ -1,7 +1,7 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
 import {apply} from './algorithm.js'
-
+import {help} from './help.js'
 let START = 0
 let DESTINATION = 0
 
@@ -32,6 +32,7 @@ function selectStartToEnd() {
     container.addEventListener('mousedown', e => {
         if (!points.startSelected) {
             Util.set_style(e.target, { backgroundColor: '#E91E63' })
+            e.target.innerHTML = 'S'
             points.startSelected = true
             START = e.target.id
             return
@@ -39,6 +40,7 @@ function selectStartToEnd() {
         if (points.startSelected && !points.endSelected) {
             if(e.target!==NODES[START]){
                 Util.set_style(e.target, { backgroundColor: '#EF6C00' })
+                e.target.innerHTML = 'E'
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
@@ -58,6 +60,7 @@ function startAlgorithm(){
 }
 
 // initializing....
+help()
 let NODE_SIZE = setNodeSIze()
 let NODES = generateGrid(container, NODE_SIZE)
 console.log(NODES.length)
