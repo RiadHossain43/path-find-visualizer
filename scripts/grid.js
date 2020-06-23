@@ -25,7 +25,7 @@ function drawAble(container, NODES, mouse) {
         container.addEventListener('mouseover', (e) => {
             let ele
             ele = document.elementFromPoint(e.clientX, e.clientY)
-            if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
+            if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black' })
                 ele.iswall = true
             }
@@ -36,7 +36,7 @@ function drawAble(container, NODES, mouse) {
         container.addEventListener('touchmove', (e) => {
             let ele
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
-            if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
+            if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black' })
                 ele.iswall = true
             }

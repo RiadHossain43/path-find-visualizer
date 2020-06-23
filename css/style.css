@@ -18,6 +18,10 @@ body{
     background-color: aqua;
     border: 1px solid black;
     cursor: pointer;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
 }
 .features{
     /* background-color:red; */
@@ -42,6 +46,10 @@ body{
     background-color: rgba(48,63,159 ,1);
     border-radius: 3px;
     cursor: pointer;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;
 }
 .credit{
     
