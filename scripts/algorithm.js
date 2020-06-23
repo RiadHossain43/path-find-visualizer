@@ -4,7 +4,6 @@ import { START, DESTINATION, NODES } from './app.js'
 let found
 let FOUND_DEST = false
 let t = 0
-let ANIM_Fineshed = false
 
 const output = Util.eleQRY('.output')
 

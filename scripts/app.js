@@ -30,7 +30,6 @@ function selectStartToEnd() {
         walldrawable: false
     }
     container.addEventListener('mousedown', e => {
-
         if (!points.startSelected) {
             Util.set_style(e.target, { backgroundColor: '#E91E63' })
             points.startSelected = true
