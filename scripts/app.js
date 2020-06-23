@@ -10,7 +10,7 @@ const algo_btn = Util.eleQRY('.algo')
 
 function setNodeSIze(){
     let NODE_SIZE
-    if(window.innerWidth<768) NODE_SIZE = 10 
+    if(window.innerWidth<768) NODE_SIZE = 12
     else NODE_SIZE = 15 
     {
         container.height = Math.floor((window.innerHeight - 50) / NODE_SIZE) * NODE_SIZE
