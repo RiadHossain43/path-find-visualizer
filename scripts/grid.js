@@ -5,7 +5,7 @@ function generateGrid(container, NODE_SIZE) {
     for (var row = 0; row < container.height / NODE_SIZE; row++) {
         for (var col = 0; col < container.width / NODE_SIZE; col++) {
             let node = Util.crtEle('div')
-           
+
             {
                 node.row = row, node.col = col,
                     node.relaxed = false, node.dist = Infinity,
@@ -19,52 +19,73 @@ function generateGrid(container, NODE_SIZE) {
     }
     return NODE
 }
-function handleDraw(container, NODES) {
-    let mouse = {
-        ispressed: false,
-    }
-    window.addEventListener('mousedown', e => {
-
-        mouse.ispressed = true
-        console.log("MuseDown:",mouse.ispressed)
-
-    })
-    window.addEventListener('mouseup', e => { 
-
-        mouse.ispressed = false
-        console.log("MuseDown:",mouse.ispressed)
-
-    })
-    window.addEventListener('touchstart', e => {
-
-        mouse.ispressed = true
-        console.log("MuseDown:",mouse.ispressed)
-
-    })
-    window.addEventListener('touchend', e => {
-
-        mouse.ispressed = false
-        console.log("MuseDown:",mouse.ispressed)
-
-    })
+function drawAble(container, NODES, mouse) {
     if (window.innerWidth > 768) {
-        let ele
+
         container.addEventListener('mouseover', (e) => {
+            let ele
             ele = document.elementFromPoint(e.clientX, e.clientY)
             if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black' })
                 ele.iswall = true
             }
+            // makeWall(e,mouse,NODES)
         })
+
     } else {
-        let ele
         container.addEventListener('touchmove', (e) => {
+            let ele
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
-            if ((ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
+            if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black' })
                 ele.iswall = true
             }
+            // makeWall(e,mouse,NODES)
         })
     }
+}
+// function makeWall(e,mouse,NODES){
+//     let ele
+//     ele = document.elementFromPoint(e.clientX, e.clientY)
+//         if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
+//             Util.set_style(ele, { backgroundColor: 'black' })
+//             ele.iswall = true
+//         }
+// }
+function handleDraw(container, NODES) {
+    let mouse = {
+        ispressed: false,
+    }
+    window.addEventListener('mousedown', e => {
+        mouse.ispressed = true
+        console.log("MuseDown:", mouse.ispressed)
+
+        let ele
+        ele = document.elementFromPoint(e.clientX, e.clientY)
+        if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
+            Util.set_style(ele, { backgroundColor: 'black' })
+            ele.iswall = true
+        }
+        // makeWall(e,mouse,NODES)
+    })
+    window.addEventListener('mouseup', e => {
+
+        mouse.ispressed = false
+        console.log("MuseDown:", mouse.ispressed)
+
+    })
+    window.addEventListener('touchstart', e => {
+
+        mouse.ispressed = true
+        console.log("MuseDown:", mouse.ispressed)
+
+    })
+    window.addEventListener('touchend', e => {
+
+        mouse.ispressed = false
+        console.log("MuseDown:", mouse.ispressed)
+
+    })
+    drawAble(container, NODES, mouse)
 }
 export { generateGrid, handleDraw }
