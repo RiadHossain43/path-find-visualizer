@@ -51,7 +51,7 @@ function handleDraw(container, NODES) {
         let ele
         container.addEventListener('mouseover', (e) => {
             ele = document.elementFromPoint(e.clientX, e.clientY)
-            if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele!=container) {
+            if ((mouse.ispressed) && (ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black' })
                 ele.iswall = true
             }
@@ -60,7 +60,7 @@ function handleDraw(container, NODES) {
         let ele
         container.addEventListener('touchmove', (e) => {
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
-            if (ele != NODES[START] || ele != NODES[DESTINATION]) {
+            if ((ele != NODES[START] || ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black' })
                 ele.iswall = true
             }
