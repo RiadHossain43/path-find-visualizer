@@ -1,11 +1,12 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
-import { apply , setFoundDist} from './algorithm.js'
+import { apply, setFoundDist } from './algorithm.js'
 import { help } from './help.js'
 let START = 0
 let DESTINATION = 0
 let NODES = []
-let selection
+let listeners
+let walls
 let FOUND_DEST = false
 
 const container = Util.eleQRY('.container')
@@ -26,9 +27,10 @@ function setNodeSize() {
         gridTemplateColumns: `repeat(${Math.floor(container.width / NODE_SIZE)},${NODE_SIZE}px)`,
         gridTemplateRows: `repeat(${Math.floor(container.height / NODE_SIZE)},${NODE_SIZE}px)`,
     })
+    container.setAttribute('draggable', false);
     return NODE_SIZE
 }
-function selectStartToEnd(startSelected,endSelected,walldrawable) {
+function selectStartToEnd(startSelected, endSelected, walldrawable) {
     let points = {
         startSelected: startSelected,
         endSelected: endSelected,
@@ -37,9 +39,10 @@ function selectStartToEnd(startSelected,endSelected,walldrawable) {
     // console.log(points.walldrawable)
     container.addEventListener('mousedown', selection)
 
-    function selection(e){
+
+    function selection(e) {
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: '#E91E63',border:'1px solid black' })
+            Util.set_style(e.target, { backgroundColor: '#E91E63', border: '1px solid black' })
             e.target.innerHTML = 'S'
             points.startSelected = true
             START = e.target.id
@@ -47,36 +50,46 @@ function selectStartToEnd(startSelected,endSelected,walldrawable) {
         }
         if (points.startSelected && !points.endSelected) {
             if (e.target !== NODES[START]) {
-                Util.set_style(e.target, { backgroundColor: '#EF6C00',border:'1px solid black'})
+                Util.set_style(e.target, { backgroundColor: '#EF6C00', border: '1px solid black' })
                 e.target.innerHTML = 'E'
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
                 console.log(NODES[START].id, NODES[DESTINATION].id)
+                walls = handleDraw(container, NODES)
+                console.log(walls)
                 return
             }
         }
-        if (points.walldrawable) handleDraw(container, NODES)
+        // if (points.walldrawable) walls = handleDraw(container, NODES)
+        // console.log(walls)
     }
-    return selection
-    
+    console.log(walls)
+    return { selection, walls }
+
 }
 
 function startAlgorithm() {
-    algo_btn.addEventListener('click',algoStart)
-    function algoStart(){
+    algo_btn.addEventListener('click', algoStart)
+    function algoStart() {
         console.log(START, DESTINATION)
         NODES[START].dist = 0
         apply(START)
     }
     return algoStart
 }
-function clearNodes(){
-    container.innerHTML=''
+function clearNodes() {
+    container.innerHTML = ''
 }
-function clearDraw(){
-    if(selection!=undefined){
-        container.removeEventListener('mousedown', selection)
+function clearDraw() {
+    if (listeners != undefined) {
+        console.log(listeners.selection, listeners.walls)
+        container.removeEventListener('mousedown', listeners.selection)
+        if (listeners.walls != undefined) {
+            container.removeEventListener('mouseover', listeners.walls.wall1)
+            container.removeEventListener('touchmove', listeners.walls.wall2)
+            window.removeEventListener('mousedown', listeners.walls.wall3)
+        }
     }
 }
 
@@ -84,18 +97,18 @@ function clearDraw(){
 function start() {
 
     clearNodes()
-    clearDraw(selection)
+    clearDraw()
     setFoundDist(false)
     help()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
-    console.log(NODES.length,selection)
-    selection = selectStartToEnd(false,false,false)
+    // console.log(NODES.length,selection)
+    listeners = selectStartToEnd(false, false, false)
     startAlgorithm(FOUND_DEST)
-    
+
 }
 start()
-reset_btn.addEventListener('click',()=>{
+reset_btn.addEventListener('click', () => {
     start()
 })
 
@@ -105,7 +118,7 @@ reset_btn.addEventListener('click',()=>{
 
 
 
-export { START, DESTINATION, NODES }
+export { START, DESTINATION, container, NODES }
 
 
 
