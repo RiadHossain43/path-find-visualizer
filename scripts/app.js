@@ -56,15 +56,16 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 points.walldrawable = true
                 DESTINATION = e.target.id
                 console.log(NODES[START].id, NODES[DESTINATION].id)
-                walls = handleDraw(container, NODES)
-                console.log(walls)
+                
                 return
             }
         }
         // if (points.walldrawable) walls = handleDraw(container, NODES)
         // console.log(walls)
+       
     }
-    console.log(walls)
+    walls = handleDraw(container, NODES)
+
     return { selection, walls }
 
 }
