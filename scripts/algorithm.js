@@ -93,7 +93,7 @@ function findTrack(node) {
     let neighbours = getNeighbourAll(node.id)
     neighbours = sort_by_dist(neighbours)
     let nextNode = neighbours.shift()
-    Util.set_style(nextNode, { backgroundColor: 'yellow' })
+    Util.set_style(nextNode, { backgroundColor: '#283593',border:'1px solid #283593' })
     if (nextNode.dist == 1) {
         return
     }

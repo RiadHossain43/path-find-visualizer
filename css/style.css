@@ -37,6 +37,8 @@ body{
 .node{
     border: 1px solid #26C6DA;
     transition: .3s;
+    display: flex;
+  
     /* animation: grid .3s ease  ;  */
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -107,6 +109,10 @@ video{
     text-align: center;
     color: white;
     font-size: 2rem;
+}
+.icon{
+    height: 90%;
+    margin: auto;
 }
 @keyframes relax{
     0%{

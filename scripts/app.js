@@ -42,16 +42,16 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
     function selection(e) {
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: '#E91E63', border: '1px solid black' })
-            e.target.innerHTML = 'S'
+            Util.set_style(e.target, { backgroundColor: '#00ACC1', border: '1px solid black' })
+            e.target.innerHTML = '<img class="icon" src="./icons/start.svg" alt="">'
             points.startSelected = true
             START = e.target.id
             return
         }
         if (points.startSelected && !points.endSelected) {
             if (e.target !== NODES[START]) {
-                Util.set_style(e.target, { backgroundColor: '#EF6C00', border: '1px solid black' })
-                e.target.innerHTML = 'E'
+                Util.set_style(e.target, { backgroundColor: '#00ACC1', border: '1px solid black' })
+                e.target.innerHTML = '<img class="icon" src="./icons/destination.svg" alt="">'
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
