@@ -1,11 +1,12 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
-import { apply } from './algorithm.js'
+import { apply , setFoundDist} from './algorithm.js'
 import { help } from './help.js'
 let START = 0
 let DESTINATION = 0
 let NODES = []
 let selection
+let FOUND_DEST = false
 
 const container = Util.eleQRY('.container')
 const buttons = Util.eleCls('btns')
@@ -62,38 +63,41 @@ function selectStartToEnd(startSelected,endSelected,walldrawable) {
 }
 
 function startAlgorithm() {
-    algo_btn.addEventListener('click', () => {
+    algo_btn.addEventListener('click',algoStart)
+    function algoStart(){
         console.log(START, DESTINATION)
         NODES[START].dist = 0
         apply(START)
-    })
+    }
+    return algoStart
 }
 function clearNodes(){
     container.innerHTML=''
-   
 }
-function clearDraw(selection){
-    if(selection!=undefined)container.removeEventListener('mousedown', selection)
+function clearDraw(){
+    if(selection!=undefined){
+        container.removeEventListener('mousedown', selection)
+    }
 }
 
 // initializing....
 function start() {
-    START = 0
-    DESTINATION = 0
-    // clearNodes()
-    // clearDraw(selection)
+
+    clearNodes()
+    clearDraw(selection)
+    setFoundDist(false)
     help()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
-    console.log(NODES.length)
+    console.log(NODES.length,selection)
     selection = selectStartToEnd(false,false,false)
-    startAlgorithm()
+    startAlgorithm(FOUND_DEST)
     
 }
 start()
-// reset_btn.addEventListener('click',()=>{
-//     start()
-// })
+reset_btn.addEventListener('click',()=>{
+    start()
+})
 
 
 

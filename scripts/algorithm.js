@@ -1,8 +1,8 @@
 import * as Util from './util.js'
-import { START, DESTINATION, NODES } from './app.js'
+import { START, DESTINATION, NODES} from './app.js'
 
 let found
-let FOUND_DEST = false
+let FOUND_DEST 
 let t = 0
 
 const output = Util.eleQRY('.output')
@@ -99,12 +99,17 @@ function findTrack(node) {
     }
     findTrack(nextNode)
 }
+function setFoundDist(bool){
+    FOUND_DEST = bool
+}
 
 function apply(inp) {
+    // console.log('start')
     let neighbours = getNeighbour(inp)
     neighbours = relaxNode(inp, neighbours)
     
     let nextNode = getMin()
+    
     if(nextNode==undefined) return
     if (nextNode.id == DESTINATION) {
         neighbours = getNeighbour(nextNode.id)
@@ -128,4 +133,4 @@ function apply(inp) {
 }
 
 
-export { apply }
+export { apply ,setFoundDist}
