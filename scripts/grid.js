@@ -1,8 +1,10 @@
 import * as Util from './util.js'
 import { START, DESTINATION } from './app.js'
+let click = new Util.sound('./sounds/fire.mp3')
 function generateGrid(container, NODE_SIZE) {
     let NODE = []
-    let t
+    let gridanim = ['grid1','grid2']
+
     for (var row = 0; row < container.height / NODE_SIZE; row++) {
         for (var col = 0; col < container.width / NODE_SIZE; col++) {
             let node = Util.crtEle('div')
@@ -14,10 +16,8 @@ function generateGrid(container, NODE_SIZE) {
                     node.iswall = false
             }
             Util.addStyel(node, 'node')
-            // setTimeout(()=>{
-            //     // Util.set_style(node,{ animation:'grid .3s ease'})
-            // },t+100)
-            // t+=node.id
+            // Util.set_style(node,{ animation:`${gridanim[node.id%2]} 1s ease`})
+            
             container.append(node)
             NODE.push(node)
         }
@@ -33,22 +33,27 @@ function handleDraw(container, NODES) {
     }
 
     function wall1(e){
+        
             let ele
             ele = document.elementFromPoint(e.clientX, e.clientY)
             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
                 ele.iswall = true
+                // click.play()
             }
     }
     function wall2(e){
+       
             let ele
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
                 Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
                 ele.iswall = true
+                // click.play()
             }
     }
     function wall3(e){
+       
         mouse.ispressed = true
         // console.log("MuseDown:", mouse.ispressed)
         let ele
@@ -56,6 +61,7 @@ function handleDraw(container, NODES) {
         if ((mouse.ispressed) && (ele != NODES[START] && ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
             Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
             ele.iswall = true
+            // click.play()
         }
     }
     function wall4(e){

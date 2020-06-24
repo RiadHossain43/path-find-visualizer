@@ -14,6 +14,8 @@ const buttons = Util.eleCls('btns')
 const algo_btn = buttons[0]
 const reset_btn = buttons[1]
 
+let click = new Util.sound('./sounds/fire.mp3')
+
 function setNodeSize() {
     let NODE_SIZE
     if (window.innerWidth < 768) NODE_SIZE = 12
@@ -46,6 +48,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
             e.target.innerHTML = '<img class="icon" src="./icons/start.svg" alt="">'
             points.startSelected = true
             START = e.target.id
+            click.play()
             return
         }
         if (points.startSelected && !points.endSelected) {
@@ -56,7 +59,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 points.walldrawable = true
                 DESTINATION = e.target.id
                 console.log('START:',NODES[START].id,"END:",NODES[DESTINATION].id)
-                
+                click.play()
                 return
             }
         }
@@ -69,6 +72,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
 function startAlgorithm() {
     algo_btn.addEventListener('click', algoStart)
+    
     function algoStart() {
         console.log(START, DESTINATION)
         NODES[START].dist = 0
@@ -110,6 +114,7 @@ function start() {
 }
 start()
 reset_btn.addEventListener('click', () => {
+    click.play()
     start()
 })
 
