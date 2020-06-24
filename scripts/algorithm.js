@@ -3,7 +3,7 @@ import { START, DESTINATION, NODES} from './app.js'
 
 let found
 let FOUND_DEST 
-let t = 0
+let time 
 
 const output = Util.eleQRY('.output')
 
@@ -20,10 +20,10 @@ function relaxNode(i, neighbours) {
             findTrack(found)
             return
         }
-        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax .35s ease',border:'1px solid black'})
+        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax .35s ease',border:'1px solid #3F51B5'})
 
-    },t+1000) 
-    t+=1
+    },time+1000) 
+    time+=1
     
     return neighbours
 }
@@ -100,7 +100,7 @@ function findTrack(node) {
     findTrack(nextNode)
 }
 function setFoundDist(t,bool){
-    t = t
+    time = t
     FOUND_DEST = bool
 }
 

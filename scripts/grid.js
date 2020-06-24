@@ -17,7 +17,7 @@ function generateGrid(container, NODE_SIZE) {
             // setTimeout(()=>{
             //     // Util.set_style(node,{ animation:'grid .3s ease'})
             // },t+100)
-            t+=node.id
+            // t+=node.id
             container.append(node)
             NODE.push(node)
         }
@@ -91,6 +91,14 @@ function handleDraw(container, NODES) {
             ele.iswall = true
         }
     }
+    function wall4(e){
+        mouse.ispressed = false
+        console.log("MuseDown:", mouse.ispressed)
+    }
+    function wall5(e){
+        mouse.ispressed = true
+        console.log("MuseDown:", mouse.ispressed)
+    }
 
     function drawAble(container, NODES, mouse) {
         if (window.innerWidth > 768) {
@@ -100,25 +108,10 @@ function handleDraw(container, NODES) {
         }
     }
     window.addEventListener('mousedown',wall3)
-    window.addEventListener('mouseup', e => {
-
-        mouse.ispressed = false
-        console.log("MuseDown:", mouse.ispressed)
-
-    })
-    window.addEventListener('touchstart', e => {
-
-        mouse.ispressed = true
-        console.log("MuseDown:", mouse.ispressed)
-
-    })
-    window.addEventListener('touchend', e => {
-
-        mouse.ispressed = false
-        console.log("MuseDown:", mouse.ispressed)
-
-    })
+    window.addEventListener('mouseup', wall4)
+    window.addEventListener('touchstart', wall5)
+    window.addEventListener('touchend',wall4)
     drawAble(container, NODES, mouse)
-    return {wall1,wall2,wall3}
+    return {wall1,wall2,wall3,wall4,wall5}
 }
 export { generateGrid, handleDraw}

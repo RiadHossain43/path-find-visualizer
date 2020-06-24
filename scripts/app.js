@@ -60,9 +60,6 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 return
             }
         }
-        // if (points.walldrawable) walls = handleDraw(container, NODES)
-        // console.log(walls)
-       
     }
     walls = handleDraw(container, NODES)
 
@@ -90,6 +87,9 @@ function clearDraw() {
             container.removeEventListener('mouseover', listeners.walls.wall1)
             container.removeEventListener('touchmove', listeners.walls.wall2)
             window.removeEventListener('mousedown', listeners.walls.wall3)
+            window.removeEventListener('mouseup', listeners.walls.wall4)
+            window.removeEventListener('touchstart', listeners.walls.wall5)
+            window.removeEventListener('touchend', listeners.walls.wall4)
         }
     }
 }
