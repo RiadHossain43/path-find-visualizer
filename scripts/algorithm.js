@@ -24,7 +24,7 @@ function relaxNode(i, neighbours) {
 
     },time+1000) 
     time+=1
-    
+
     return neighbours
 }
 
@@ -117,7 +117,7 @@ function apply(inp) {
         neighbours = relaxNode(nextNode.id, neighbours)
         FOUND_DEST = true
         found = nextNode
-        console.log(found.dist)
+        console.log("MIN DIST:",found.dist)
         output.innerHTML = `MINIMUM DISTANCE:<span style="
                             color:white;
                             font-size:1rem;

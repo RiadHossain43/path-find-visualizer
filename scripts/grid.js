@@ -25,39 +25,6 @@ function generateGrid(container, NODE_SIZE) {
     return NODE
 }
 
-// function drawAble(container, NODES, mouse) {
-//     if (window.innerWidth > 768) {
-
-//         container.addEventListener('mouseover', (e) => {
-//             let ele
-//             ele = document.elementFromPoint(e.clientX, e.clientY)
-//             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
-//                 Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
-//                 ele.iswall = true
-//             }
-//             // makeWall(e,mouse,NODES)
-//         })
-
-//     } else {
-//         container.addEventListener('touchmove', (e) => {
-//             let ele
-//             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
-//             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
-//                 Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
-//                 ele.iswall = true
-//             }
-//             // makeWall(e,mouse,NODES)
-//         })
-//     }
-// }
-// function makeWall(e,mouse,NODES){
-//     let ele
-//     ele = document.elementFromPoint(e.clientX, e.clientY)
-//         if ((mouse.ispressed) && (ele != NODES[START] && ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
-//             Util.set_style(ele, { backgroundColor: 'black' })
-//             ele.iswall = true
-//         }
-// }
 
 
 function handleDraw(container, NODES) {
@@ -83,7 +50,7 @@ function handleDraw(container, NODES) {
     }
     function wall3(e){
         mouse.ispressed = true
-        console.log("MuseDown:", mouse.ispressed)
+        // console.log("MuseDown:", mouse.ispressed)
         let ele
         ele = document.elementFromPoint(e.clientX, e.clientY)
         if ((mouse.ispressed) && (ele != NODES[START] && ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
@@ -93,11 +60,11 @@ function handleDraw(container, NODES) {
     }
     function wall4(e){
         mouse.ispressed = false
-        console.log("MuseDown:", mouse.ispressed)
+        // console.log("MuseDown:", mouse.ispressed)
     }
     function wall5(e){
         mouse.ispressed = true
-        console.log("MuseDown:", mouse.ispressed)
+        // console.log("MuseDown:", mouse.ispressed)
     }
 
     function drawAble(container, NODES, mouse) {

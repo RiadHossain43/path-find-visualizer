@@ -55,7 +55,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
-                console.log(NODES[START].id, NODES[DESTINATION].id)
+                console.log('START:',NODES[START].id,"END:",NODES[DESTINATION].id)
                 
                 return
             }
@@ -103,7 +103,7 @@ function start() {
     help()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
-    // console.log(NODES.length,selection)
+
     listeners = selectStartToEnd(false, false, false)
     startAlgorithm(FOUND_DEST)
 
