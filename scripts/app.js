@@ -98,7 +98,7 @@ function start() {
 
     clearNodes()
     clearDraw()
-    setFoundDist(false)
+    setFoundDist(0,false)
     help()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)

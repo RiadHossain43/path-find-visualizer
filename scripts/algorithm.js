@@ -99,7 +99,8 @@ function findTrack(node) {
     }
     findTrack(nextNode)
 }
-function setFoundDist(bool){
+function setFoundDist(t,bool){
+    t = t
     FOUND_DEST = bool
 }
 
