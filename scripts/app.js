@@ -4,7 +4,8 @@ import { apply } from './algorithm.js'
 import { help } from './help.js'
 let START = 0
 let DESTINATION = 0
-let NODES
+let NODES = []
+let selection
 
 const container = Util.eleQRY('.container')
 const buttons = Util.eleCls('btns')
@@ -26,15 +27,18 @@ function setNodeSize() {
     })
     return NODE_SIZE
 }
-function selectStartToEnd() {
+function selectStartToEnd(startSelected,endSelected,walldrawable) {
     let points = {
-        startSelected: false,
-        endSelected: false,
-        walldrawable: false
+        startSelected: startSelected,
+        endSelected: endSelected,
+        walldrawable: walldrawable
     }
-    container.addEventListener('mousedown', e => {
+    // console.log(points.walldrawable)
+    container.addEventListener('mousedown', selection)
+
+    function selection(e){
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: '#E91E63' })
+            Util.set_style(e.target, { backgroundColor: '#E91E63',border:'1px solid black' })
             e.target.innerHTML = 'S'
             points.startSelected = true
             START = e.target.id
@@ -42,7 +46,7 @@ function selectStartToEnd() {
         }
         if (points.startSelected && !points.endSelected) {
             if (e.target !== NODES[START]) {
-                Util.set_style(e.target, { backgroundColor: '#EF6C00' })
+                Util.set_style(e.target, { backgroundColor: '#EF6C00',border:'1px solid black'})
                 e.target.innerHTML = 'E'
                 points.endSelected = true
                 points.walldrawable = true
@@ -52,8 +56,11 @@ function selectStartToEnd() {
             }
         }
         if (points.walldrawable) handleDraw(container, NODES)
-    })
+    }
+    return selection
+    
 }
+
 function startAlgorithm() {
     algo_btn.addEventListener('click', () => {
         console.log(START, DESTINATION)
@@ -61,18 +68,27 @@ function startAlgorithm() {
         apply(START)
     })
 }
+function clearNodes(){
+    container.innerHTML=''
+   
+}
+function clearDraw(selection){
+    if(selection!=undefined)container.removeEventListener('mousedown', selection)
+}
 
 // initializing....
 function start() {
     START = 0
     DESTINATION = 0
+    // clearNodes()
+    // clearDraw(selection)
     help()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
     console.log(NODES.length)
-    selectStartToEnd()
+    selection = selectStartToEnd(false,false,false)
     startAlgorithm()
-
+    
 }
 start()
 // reset_btn.addEventListener('click',()=>{

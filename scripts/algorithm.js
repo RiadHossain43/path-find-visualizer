@@ -20,7 +20,7 @@ function relaxNode(i, neighbours) {
             findTrack(found)
             return
         }
-        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax .35s ease' })
+        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax .35s ease',border:'1px solid black'})
 
     },t+1000) 
     t+=1
