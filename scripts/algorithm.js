@@ -7,6 +7,21 @@ let time
 
 const output = Util.eleQRY('.output')
 
+function sound(src){
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function () {
+        this.sound.play();
+    }
+    this.stop = function () {
+        this.sound.pause();
+    }
+}
+let flowSound = new sound('./sounds/fire.mp3')
 function relaxNode(i, neighbours) {
 
     for (let j = 0; j < neighbours.length; j++) {
@@ -15,6 +30,7 @@ function relaxNode(i, neighbours) {
         }
     }
     NODES[i].relaxed = true
+    
     if (NODES[i] !== NODES[START]) setTimeout(()=>{
         if(NODES[i]== NODES[DESTINATION]){
             findTrack(found)
@@ -106,6 +122,8 @@ function setFoundDist(t,bool){
 
 function apply(inp) {
     // console.log('start')
+    flowSound.play()
+    // flowSound.top()
     let neighbours = getNeighbour(inp)
     neighbours = relaxNode(inp, neighbours)
     

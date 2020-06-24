@@ -10,6 +10,8 @@ let addStyel = (ele,style)=> ele.classList.add(style)
 
 let eleQRY = qry => document.querySelector(qry)
 
+
+
 export{
     eleID,eleCls,set_style,crtEle,addStyel,eleQRY
 }

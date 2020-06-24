@@ -81,7 +81,7 @@ function clearNodes() {
 }
 function clearDraw() {
     if (listeners != undefined) {
-        console.log(listeners.selection, listeners.walls)
+        // console.log(listeners.selection, listeners.walls)
         container.removeEventListener('mousedown', listeners.selection)
         if (listeners.walls != undefined) {
             container.removeEventListener('mouseover', listeners.walls.wall1)
