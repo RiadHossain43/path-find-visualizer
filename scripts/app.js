@@ -1,6 +1,6 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
-import { apply, setFoundDist, animreset } from './algorithm.js'
+import { seachPath, setFoundDist, animreset } from './algorithm.js'
 import { help , setwarning, resetNotice} from './help.js'
 let START
 let DESTINATION
@@ -85,7 +85,7 @@ function startAlgorithm() {
         if (START != undefined && DESTINATION != undefined) {
             NODES[START].dist = 0
             clearDraw()
-            apply(START)
+            seachPath(START)
         } else setwarning()
     }
     return algoStart

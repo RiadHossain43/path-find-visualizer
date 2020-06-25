@@ -54,17 +54,19 @@ function sort_by_dist(neighbours) {
 }
 function pathError() {
     if (!FOUND_DEST) {
-        let warning = Util.eleQRY('.warning')
-        Util.set_style(warning, { display: 'block', opacity: 0 })
         setTimeout(() => {
-            Util.set_style(warning, { opacity: 1 })
-        }, 10)
-        setTimeout(() => {
-            Util.set_style(warning, { opacity: 0 })
+            let patherror = Util.eleQRY('.path-error')
+            Util.set_style(patherror, { display: 'block', opacity: 0 })
             setTimeout(() => {
-                Util.set_style(warning, { display: 'none' })
-            }, 550)
-        }, 2500)
+                Util.set_style(patherror, { opacity: 1 })
+            }, 10)
+            setTimeout(() => {
+                Util.set_style(patherror, { opacity: 0 })
+                setTimeout(() => {
+                    Util.set_style(patherror, { display: 'none' })
+                }, 550)
+            }, 2500)
+        },time+800)
     }
 }
 
@@ -164,11 +166,16 @@ function apply(inp) {
                             margin:.3rem;
                             ">${found.dist}</span>`
         // found.innerHTML = `${found.dist}`
+
         return
     }
     if (FOUND_DEST) return
     apply(nextNode.id)
 }
 
+function seachPath(inp) {
+    apply(inp)
+    pathError()
+}
 
-export { apply, setFoundDist, animreset }
+export { seachPath, setFoundDist, animreset }

@@ -128,7 +128,7 @@ video{
     color: white;
     font-size: 1.3rem;
 }
-.warning,.reset-notice{
+.warning,.reset-notice,.path-error{
     padding: 2rem;
     font-size: 2rem;
     position: absolute;
