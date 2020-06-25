@@ -7,6 +7,10 @@ let time
 let timeouts = []
 const output = Util.eleQRY('.output')
 let spread = new Util.sound('./sounds/spread.mp3')
+let inc
+
+if(window.innerWidth<768) inc = 2
+else inc = 6
 
 function relaxNode(i, neighbours) {
     let tid
@@ -25,7 +29,7 @@ function relaxNode(i, neighbours) {
         Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax 1s ease',border:'1px solid #3F51B5'})
 
     },time+100) 
-    time+=6
+    time+= inc
     timeouts.push(tid)
     return neighbours
 }
