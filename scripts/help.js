@@ -9,7 +9,7 @@ function help() {
         click.play()
         Util.set_style(instructions, { display: 'block', opacity: 0 })
         setTimeout(() => {
-            Util.set_style(instructions, { opacity: 1, height: '80%' })
+            Util.set_style(instructions, { opacity: 1, height: '90%' })
         }, 10)
     })
     back.addEventListener('click', () => {
