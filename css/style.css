@@ -122,7 +122,7 @@ video{
     color: white;
     font-size: 1.3rem;
 }
-.warning{
+.warning,.reset-notice{
     padding: 2rem;
     font-size: 2rem;
     position: absolute;
@@ -195,7 +195,7 @@ video{
         margin: .5rem;
         height: 5.5rem;
     }
-    .warning{
+    .warning,.reset-notice{
         padding: 1rem;
         font-size: 1rem;
     }

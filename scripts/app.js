@@ -1,7 +1,7 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
 import { apply, setFoundDist, animreset } from './algorithm.js'
-import { help } from './help.js'
+import { help , setwarning, resetNotice} from './help.js'
 let START
 let DESTINATION
 let NODES = []
@@ -90,19 +90,7 @@ function startAlgorithm() {
     }
     return algoStart
 }
-function setwarning() {
-    let warning = Util.eleQRY('.warning')
-    Util.set_style(warning, { display: 'block', opacity: 0 })
-    setTimeout(() => {
-        Util.set_style(warning, { opacity: 1})
-    }, 10)
-    setTimeout(() => {
-        Util.set_style(warning, { opacity: 0 })
-        setTimeout(() => {
-            Util.set_style(warning, { display: 'none' })
-        }, 550)
-    }, 2500)
-}
+
 function clearNodes() {
     container.innerHTML = ''
 }
@@ -139,6 +127,7 @@ start()
 reset_btn.addEventListener('click', () => {
     click.play()
     animreset()
+    resetNotice()
     START = DESTINATION = undefined
     start()
 })
