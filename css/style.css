@@ -183,6 +183,9 @@ video{
     .instructions{
         width: 80%;
     }
+    .features{
+        height: 3.5rem;
+    }
 }
 @media screen and (max-width:768px){
     body{
