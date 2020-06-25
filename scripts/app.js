@@ -20,7 +20,7 @@ function setNodeSize() {
     let NODE_SIZE, heightbalance
     if (window.innerWidth < 768) {
         NODE_SIZE = 12
-        heightbalance = 50
+        heightbalance = 100
     }
     else {
         NODE_SIZE = 15
