@@ -9,7 +9,7 @@ const output = Util.eleQRY('.output')
 let spread = new Util.sound('./sounds/spread.mp3')
 let inc
 
-if(window.innerWidth<768) inc = 2
+if(window.innerWidth<768) inc = 10
 else inc = 6
 
 function relaxNode(i, neighbours) {
