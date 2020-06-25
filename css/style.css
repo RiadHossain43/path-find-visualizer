@@ -207,7 +207,7 @@ video{
 @media screen and (max-width:768px){
     body{
        font-size: .8rem;
-        height: 95vh;
+        height: 90vh;
     }
     .features{
         margin: .5rem;
