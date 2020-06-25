@@ -9,7 +9,7 @@ html{
     margin: 0;
 }
 body{
-    height: 100%;
+    height: 100vh;
     width: 100%;
     overflow: hidden;
     position: fixed;
@@ -207,6 +207,7 @@ video{
 @media screen and (max-width:768px){
     body{
        font-size: .8rem;
+        height: 95vh;
     }
     .features{
         margin: .5rem;
