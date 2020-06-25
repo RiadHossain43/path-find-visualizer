@@ -180,7 +180,9 @@ video{
 }
 
 @media screen and (max-width:992px){
-    
+    .instructions{
+        width: 80%;
+    }
 }
 @media screen and (max-width:768px){
     body{
@@ -193,9 +195,6 @@ video{
     .warning{
         padding: 1rem;
         font-size: 1rem;
-    }
-    .instructions{
-        width: 90%;
     }
     .credit{
         display: block;
