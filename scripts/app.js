@@ -74,6 +74,7 @@ function startAlgorithm() {
     algo_btn.addEventListener('click', algoStart)
 
     function algoStart() {
+        click.play()
         console.log(START, DESTINATION)
         if (START != undefined && DESTINATION != undefined) {
             NODES[START].dist = 0
