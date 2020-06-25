@@ -1,6 +1,6 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
-import { apply, setFoundDist,animreset} from './algorithm.js'
+import { apply, setFoundDist, animreset } from './algorithm.js'
 import { help } from './help.js'
 let START
 let DESTINATION
@@ -17,12 +17,12 @@ const reset_btn = buttons[1]
 let click = new Util.sound('./sounds/fire.mp3')
 
 function setNodeSize() {
-    let NODE_SIZE,heightbalance
-    if (window.innerWidth < 768){ 
+    let NODE_SIZE, heightbalance
+    if (window.innerWidth < 768) {
         NODE_SIZE = 12
         heightbalance = 50
     }
-    else{
+    else {
         NODE_SIZE = 15
         heightbalance = 50
     }
@@ -86,9 +86,22 @@ function startAlgorithm() {
             NODES[START].dist = 0
             clearDraw()
             apply(START)
-        }
+        } else setwarning()
     }
     return algoStart
+}
+function setwarning() {
+    let warning = Util.eleQRY('.warning')
+    Util.set_style(warning, { display: 'block', opacity: 0 })
+    setTimeout(() => {
+        Util.set_style(warning, { opacity: 1})
+    }, 10)
+    setTimeout(() => {
+        Util.set_style(warning, { opacity: 0 })
+        setTimeout(() => {
+            Util.set_style(warning, { display: 'none' })
+        }, 550)
+    }, 2500)
 }
 function clearNodes() {
     container.innerHTML = ''

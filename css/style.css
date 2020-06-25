@@ -75,6 +75,7 @@ body{
 }
 .back{
     padding: .4rem;  
+    background-color: #E91E63;
 }
 .credit{
     line-height:2;
@@ -92,14 +93,14 @@ a{
     left: 50%;
     transform: translate(-50%,-50%);
     height: 0%;
-    width: 90%;
-    background-color: rgba(0, 0, 0,.85);
+    width: 50%;
+    background-color: #3F51B5;
     display: none;
     padding: 1rem;
     transition: .4s;
     overflow: hidden;
+    border-radius: 4px;
 }
-
 .steps{
     color: white;
     padding:0 3rem;
@@ -120,6 +121,19 @@ video{
     text-align: center;
     color: white;
     font-size: 2rem;
+}
+.warning{
+    padding: 2rem;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #3F51B5;
+    color: white;
+    display: none;
+    transition: .5s;
+    border-radius: 4px;
 }
 
 @keyframes relax{
@@ -175,6 +189,9 @@ video{
     .features{
         margin: .5rem;
         height: 5.5rem;
+    }
+    .instructions{
+        width: 90%;
     }
     .credit{
         display: block;
