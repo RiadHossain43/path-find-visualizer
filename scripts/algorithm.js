@@ -4,12 +4,12 @@ import { START, DESTINATION, NODES} from './app.js'
 let found
 let FOUND_DEST 
 let time 
-
+let timeouts = []
 const output = Util.eleQRY('.output')
 let click = new Util.sound('./sounds/fire.mp3')
 
 function relaxNode(i, neighbours) {
-
+    let tid
     for (let j = 0; j < neighbours.length; j++) {
         if (NODES[i].dist + 1 <= neighbours[j].dist) {
             neighbours[j].dist = NODES[i].dist + 1
@@ -17,7 +17,7 @@ function relaxNode(i, neighbours) {
     }
     NODES[i].relaxed = true
     
-    if (NODES[i] !== NODES[START]) setTimeout(()=>{
+    if (NODES[i] !== NODES[START]) tid = setTimeout(()=>{
         if(NODES[i]== NODES[DESTINATION]){
             findTrack(found)
             return
@@ -26,8 +26,14 @@ function relaxNode(i, neighbours) {
 
     },time+1000) 
     time+=1
-
+    timeouts.push(tid)
     return neighbours
+}
+
+function animreset(){
+    for(let i=0;i<timeouts.length;i++){
+        clearTimeout(i)
+    } 
 }
 
 function sort_by_dist(neighbours) {
@@ -95,7 +101,7 @@ function findTrack(node) {
     let neighbours = getNeighbourAll(node.id)
     neighbours = sort_by_dist(neighbours)
     let nextNode = neighbours.shift()
-    Util.set_style(nextNode, { backgroundColor: '#283593',border:'1px solid #283593' })
+    Util.set_style(nextNode, { backgroundColor: '#EC407A',border:'1px solid #EC407A' })
     if (nextNode.dist == 1) {
         return
     }
@@ -145,4 +151,4 @@ function apply(inp) {
 }
 
 
-export { apply ,setFoundDist}
+export { apply ,setFoundDist , animreset}

@@ -1,8 +1,8 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
-import { apply, setFoundDist } from './algorithm.js'
+import { apply, setFoundDist,animreset} from './algorithm.js'
 import { help } from './help.js'
-let START 
+let START
 let DESTINATION
 let NODES = []
 let listeners
@@ -58,7 +58,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
-                console.log('START:',NODES[START].id,"END:",NODES[DESTINATION].id)
+                console.log('START:', NODES[START].id, "END:", NODES[DESTINATION].id)
                 click.play()
                 return
             }
@@ -72,13 +72,14 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
 function startAlgorithm() {
     algo_btn.addEventListener('click', algoStart)
-    
+
     function algoStart() {
         console.log(START, DESTINATION)
-        if(START!=undefined && DESTINATION!=undefined){
-                    NODES[START].dist = 0
-        apply(START)
-        } 
+        if (START != undefined && DESTINATION != undefined) {
+            NODES[START].dist = 0
+            clearDraw()
+            apply(START)
+        }
     }
     return algoStart
 }
@@ -105,7 +106,7 @@ function start() {
 
     clearNodes()
     clearDraw()
-    setFoundDist(0,false)
+    setFoundDist(0, false)
     help()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
@@ -117,6 +118,7 @@ function start() {
 start()
 reset_btn.addEventListener('click', () => {
     click.play()
+    animreset()
     START = DESTINATION = undefined
     start()
 })
