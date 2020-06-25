@@ -190,6 +190,10 @@ video{
         margin: .5rem;
         height: 5.5rem;
     }
+    .warning{
+        padding: 1rem;
+        font-size: 1rem;
+    }
     .instructions{
         width: 90%;
     }
@@ -217,3 +221,4 @@ video{
         padding: .2rem;
     }
 }
+
