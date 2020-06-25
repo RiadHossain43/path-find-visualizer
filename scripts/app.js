@@ -2,8 +2,8 @@ import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
 import { apply, setFoundDist } from './algorithm.js'
 import { help } from './help.js'
-let START = 0
-let DESTINATION = 0
+let START 
+let DESTINATION
 let NODES = []
 let listeners
 let walls
@@ -75,8 +75,10 @@ function startAlgorithm() {
     
     function algoStart() {
         console.log(START, DESTINATION)
-        NODES[START].dist = 0
+        if(START!=undefined && DESTINATION!=undefined){
+                    NODES[START].dist = 0
         apply(START)
+        } 
     }
     return algoStart
 }
@@ -115,6 +117,7 @@ function start() {
 start()
 reset_btn.addEventListener('click', () => {
     click.play()
+    START = DESTINATION = undefined
     start()
 })
 

@@ -104,6 +104,14 @@ function findTrack(node) {
 function setFoundDist(t,bool){
     time = t
     FOUND_DEST = bool
+    output.innerHTML = `MINIMUM DISTANCE:<span style="
+                            color:white;
+                            font-size:1rem;
+                            background-color:#3F51B5;
+                            border-radious: 3px;
+                            padding:.5rem;
+                            margin:.3rem;
+                            ">${0}</span>`
 }
 
 function apply(inp) {
