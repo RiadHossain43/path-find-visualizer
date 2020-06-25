@@ -37,13 +37,7 @@ body{
     /* background-color:red; */
     margin: .5rem;
 }
-.how{
-    cursor: pointer;
-    color: white;
-    background-color: #1A237E;
-    padding: .7rem;
-    border-radius: 3px;
-}
+
 .node{
     border: 1px solid #26C6DA;
     transition: .3s;
@@ -60,7 +54,7 @@ body{
     padding: .4rem;
     margin: .2rem;
 }
-.btns,.back{
+.btns,.back,.how{
     outline: none;
     border: none;
     color: white;
@@ -72,11 +66,15 @@ body{
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;
 }
+.how{
+    background-color: #1A237E;
+    padding: .5rem;
+}
 .back{
     padding: .4rem;  
 }
 .credit{
-    line-height: 1.5;
+    line-height:2;
 }
 a{
     text-decoration: none;
@@ -174,6 +172,7 @@ video{
     .credit{
         display: block;
         padding: .4rem;
+        margin: 0;
     }
     a{
         padding: .2rem;
@@ -188,5 +187,9 @@ video{
     }
     .video_des{
         font-size: 1rem;
+    }
+    .how{
+        background-color: #1A237E;
+        padding: .2rem;
     }
 }
