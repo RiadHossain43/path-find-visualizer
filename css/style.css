@@ -4,8 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    overflow: hidden;
+    margin: 0;
+}
 body{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     font-family: Roboto,'cursive';
     -webkit-tap-highlight-color: transparent;
@@ -190,9 +194,6 @@ video{
 @media screen and (max-width:768px){
     body{
        font-size: .8rem;
-        height: 90vh;
-        width: 100%;
-
     }
     .features{
         margin: .5rem;
