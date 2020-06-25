@@ -21,7 +21,7 @@ function setNodeSize() {
     if (window.innerWidth < 768) NODE_SIZE = 12
     else NODE_SIZE = 15
     {
-        container.height = Math.floor((window.innerHeight - 50) / NODE_SIZE) * NODE_SIZE
+        container.height = Math.floor((window.innerHeight - 100) / NODE_SIZE) * NODE_SIZE
         container.width = Math.floor((window.innerWidth - 20) / NODE_SIZE) * NODE_SIZE
     }
     Util.set_style(container, {
@@ -45,7 +45,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
     function selection(e) {
         if (!points.startSelected) {
             Util.set_style(e.target, { backgroundColor: '#00ACC1', border: '1px solid black' })
-            e.target.innerHTML = '<img class="icon" src="./icons/start.svg" alt="">'
+            e.target.style.backgroundImage = `url('./icons/start.svg')`
             points.startSelected = true
             START = e.target.id
             click.play()
@@ -54,7 +54,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
         if (points.startSelected && !points.endSelected) {
             if (e.target !== NODES[START]) {
                 Util.set_style(e.target, { backgroundColor: '#00ACC1', border: '1px solid black' })
-                e.target.innerHTML = '<img class="icon" src="./icons/destination.svg" alt="">'
+                e.target.style.backgroundImage = `url('./icons/destination.svg')`
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
