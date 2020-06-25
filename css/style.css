@@ -9,9 +9,10 @@ html{
     margin: 0;
 }
 body{
-    height: 100%;
+    height: 100vh;
     width: 100%;
     overflow: hidden;
+    position: fixed;
     font-family: Roboto,'cursive';
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
