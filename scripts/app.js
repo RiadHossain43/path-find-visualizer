@@ -17,11 +17,17 @@ const reset_btn = buttons[1]
 let click = new Util.sound('./sounds/fire.mp3')
 
 function setNodeSize() {
-    let NODE_SIZE
-    if (window.innerWidth < 768) NODE_SIZE = 12
-    else NODE_SIZE = 15
+    let NODE_SIZE,heightbalance
+    if (window.innerWidth < 768){ 
+        NODE_SIZE = 12
+        heightbalance = 100
+    }
+    else{
+        NODE_SIZE = 15
+        heightbalance = 50
+    }
     {
-        container.height = Math.floor((window.innerHeight - 100) / NODE_SIZE) * NODE_SIZE
+        container.height = Math.floor((window.innerHeight - heightbalance) / NODE_SIZE) * NODE_SIZE
         container.width = Math.floor((window.innerWidth - 20) / NODE_SIZE) * NODE_SIZE
     }
     Util.set_style(container, {

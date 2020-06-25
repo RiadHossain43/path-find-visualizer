@@ -34,7 +34,7 @@ body{
 }
 .features{
     margin: .5rem;
-    height: 5.5rem;
+    height: 2.5rem;
 }
 
 .node{
@@ -165,9 +165,16 @@ video{
     }
 }
 
+@media screen and (max-width:992px){
+    
+}
 @media screen and (max-width:768px){
     body{
        font-size: .8rem;
+    }
+    .features{
+        margin: .5rem;
+        height: 5.5rem;
     }
     .credit{
         display: block;
