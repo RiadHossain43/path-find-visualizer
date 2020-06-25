@@ -1,15 +1,15 @@
 import * as Util from './util.js'
-import { START, DESTINATION, NODES} from './app.js'
+import { START, DESTINATION, NODES } from './app.js'
 
 let found
-let FOUND_DEST 
-let time 
+let FOUND_DEST
+let time
 let timeouts = []
 const output = Util.eleQRY('.output')
 let spread = new Util.sound('./sounds/spread.mp3')
 let inc
 
-if(window.innerWidth<768) inc = 10
+if (window.innerWidth < 768) inc = 10
 else inc = 6
 
 function relaxNode(i, neighbours) {
@@ -20,24 +20,24 @@ function relaxNode(i, neighbours) {
         }
     }
     NODES[i].relaxed = true
-    
-    if (NODES[i] !== NODES[START]) tid = setTimeout(()=>{
-        if(NODES[i]== NODES[DESTINATION]){
+
+    if (NODES[i] !== NODES[START]) tid = setTimeout(() => {
+        if (NODES[i] == NODES[DESTINATION]) {
             findTrack(found)
             return
         }
-        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',animation:'relax 1s ease',border:'1px solid #3F51B5'})
+        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)', animation: 'relax 1s ease', border: '1px solid #3F51B5' })
 
-    },time+100) 
-    time+= inc
+    }, time + 100)
+    time += inc
     timeouts.push(tid)
     return neighbours
 }
 
-function animreset(){
-    for(let i=0;i<timeouts.length;i++){
+function animreset() {
+    for (let i = 0; i < timeouts.length; i++) {
         clearTimeout(i)
-    } 
+    }
 }
 
 function sort_by_dist(neighbours) {
@@ -52,16 +52,32 @@ function sort_by_dist(neighbours) {
     }
     return neighbours
 }
-function getMin(){
+function pathError() {
+    if (!FOUND_DEST) {
+        let warning = Util.eleQRY('.warning')
+        Util.set_style(warning, { display: 'block', opacity: 0 })
+        setTimeout(() => {
+            Util.set_style(warning, { opacity: 1 })
+        }, 10)
+        setTimeout(() => {
+            Util.set_style(warning, { opacity: 0 })
+            setTimeout(() => {
+                Util.set_style(warning, { display: 'none' })
+            }, 550)
+        }, 2500)
+    }
+}
+
+function getMin() {
     let MINNODE
     let min = Infinity
-    for(let i = 0 ;i<NODES.length;i++){
-        if(NODES[i].dist <= min && !NODES[i].relaxed){
+    for (let i = 0; i < NODES.length; i++) {
+        if (NODES[i].dist <= min && !NODES[i].relaxed) {
             min = NODES[i].dist
             MINNODE = NODES[i]
         }
     }
-    if(min===Infinity) MINNODE = undefined
+    if (min === Infinity) MINNODE = undefined
     return MINNODE
 }
 
@@ -72,7 +88,7 @@ function getNeighbour(i) {
             (NODES[j].row == NODES[i].row + 1 && NODES[j].col == NODES[i].col + 1) ||
             (NODES[j].row == NODES[i].row - 1 && NODES[j].col == NODES[i].col + 1) ||
             (NODES[j].row == NODES[i].row + 1 && NODES[j].col == NODES[i].col - 1) ||
-             NODES[j].relaxed || NODES[j].iswall)  continue
+            NODES[j].relaxed || NODES[j].iswall) continue
         if (NODES[j].row >= NODES[i].row - 1 &&
             NODES[j].row <= NODES[i].row + 1 &&
             NODES[j].col >= NODES[i].col - 1 &&
@@ -105,13 +121,13 @@ function findTrack(node) {
     let neighbours = getNeighbourAll(node.id)
     neighbours = sort_by_dist(neighbours)
     let nextNode = neighbours.shift()
-    Util.set_style(nextNode, { backgroundColor: '#EC407A',border:'1px solid #EC407A' })
+    Util.set_style(nextNode, { backgroundColor: '#EC407A', border: '1px solid #EC407A' })
     if (nextNode.dist == 1) {
         return
     }
     findTrack(nextNode)
 }
-function setFoundDist(t,bool){
+function setFoundDist(t, bool) {
     time = t
     FOUND_DEST = bool
     output.innerHTML = `MINIMUM DISTANCE:<span style="
@@ -126,19 +142,19 @@ function setFoundDist(t,bool){
 
 function apply(inp) {
     // console.log('start')
-   
+
     let neighbours = getNeighbour(inp)
     neighbours = relaxNode(inp, neighbours)
-    
+
     let nextNode = getMin()
-    
-    if(nextNode==undefined) return
+
+    if (nextNode == undefined) return
     if (nextNode.id == DESTINATION) {
         neighbours = getNeighbour(nextNode.id)
         neighbours = relaxNode(nextNode.id, neighbours)
         FOUND_DEST = true
         found = nextNode
-        console.log("MIN DIST:",found.dist)
+        console.log("MIN DIST:", found.dist)
         output.innerHTML = `MINIMUM DISTANCE:<span style="
                             color:white;
                             font-size:1rem;
@@ -150,9 +166,9 @@ function apply(inp) {
         // found.innerHTML = `${found.dist}`
         return
     }
-    if(FOUND_DEST) return 
+    if (FOUND_DEST) return
     apply(nextNode.id)
 }
 
 
-export { apply ,setFoundDist , animreset}
+export { apply, setFoundDist, animreset }

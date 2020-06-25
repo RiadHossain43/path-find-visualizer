@@ -124,6 +124,7 @@ function start() {
 
 }
 start()
+
 reset_btn.addEventListener('click', () => {
     click.play()
     animreset()
