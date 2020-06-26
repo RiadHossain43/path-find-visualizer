@@ -13,7 +13,7 @@ const container = Util.eleQRY('.container')
 const buttons = Util.eleCls('btns')
 const algo_btn = buttons[0]
 const reset_btn = buttons[1]
-const logo = Util.eleQRY('.logo>img')
+const logo = Util.eleQRY('.logo img')
 
 let click = new Util.sound('./sounds/fire.mp3')
 
@@ -58,7 +58,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
     function selection(e) {
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: `var(--path-color)`, border: '1px solid black' })
+            Util.set_style(e.target, {border: '1px solid var(--path-color)' })
             e.target.style.backgroundImage = `url('./icons/start.svg')`
             points.startSelected = true
             START = e.target.id
@@ -67,7 +67,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
         }
         if (points.startSelected && !points.endSelected) {
             if (e.target !== NODES[START]) {
-                Util.set_style(e.target, { backgroundColor:`var(--path-color)`, border: '1px solid black' })
+                Util.set_style(e.target, {border: '1px solid var(--path-color)' })
                 e.target.style.backgroundImage = `url('./icons/destination.svg')`
                 points.endSelected = true
                 points.walldrawable = true

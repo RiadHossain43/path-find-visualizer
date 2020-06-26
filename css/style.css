@@ -2,12 +2,13 @@
 
 :root{
     --logo-container-color:#333333;
-    --btn-colors: #1DE9B6;
+    --btn-colors: #26C6DA;
+    --instruction-btn-color:#00ACC1;
     --btn-active-colors:#4DD0E1;
     --path-color: #EC407A;
     --node-color: #E0F7FA;
     --grid-border:#B2EBF2;
-    --popup-colors:linear-gradient(105deg,#00ACC1,#4DD0E1);
+    --popup-colors:linear-gradient(105deg,#00BCD4,#4DD0E1);
     --cut-btns-colors:#F48FB1;
     --cut-btns-active-colors:#D81B60;
     --ralax-anim-duration:1.2s;
@@ -51,7 +52,7 @@ body{
     background: var(--logo-container-color);
     /* transition: 1s; */
 }
-.logo>img{
+.logo img{
     height: 10rem;
     transition: .5s;
 }
@@ -83,6 +84,7 @@ body{
     transition: .3s;
     display: flex;
     transition: .6s;
+    background-size: cover;
     /* animation: grid .3s ease  ;  */
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -93,14 +95,13 @@ body{
     display: inline;
     padding: .4rem;
     margin:0 .6rem;
-    background: linear-gradient();
+    background: var(--btn-colors);
 }
 .btns,.helpback,.how,.infoback{
     position: relative;
     outline: none;
     border: none;
     color: white;
-    background: var(--btn-colors);
     border-radius: 3px;
     cursor: pointer;
     overflow: hidden;
@@ -108,6 +109,9 @@ body{
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;
+}
+.how{
+    background: var(--instruction-btn-color);
 }
 .info{
     height: 1.5rem;
@@ -120,9 +124,6 @@ body{
 .btns:active,.how:active{
     transform: scale(.9);
     background: var(--btn-active-colors);
-}
-.how{
-    background: var(--btn-colors);
 }
 .helpback,.infoback{
     padding: .4rem;  
@@ -156,8 +157,7 @@ body{
 }
 a{
     text-decoration: none;
-    color: darkorange;
-    padding: .4rem;
+    color: #EC407A;
     border-radius: 3px ;
 }
 .instructions,.showinfo{
@@ -259,7 +259,7 @@ video{
         transform: scale(1);
     }
 }
-@keyframes grid1{
+@keyframes path{
     0%{
        transform: scale(0);
        border-radius: 100%;

@@ -6,7 +6,7 @@ let FOUND_DEST
 let time
 let timeouts = []
 const output = Util.eleQRY('.output')
-let spread = new Util.sound('./sounds/spread.mp3')
+// let path = new Util.sound('./sounds/spread.mp3')
 let inc
 
 if (window.innerWidth < 768) inc = 10
@@ -124,7 +124,12 @@ function findTrack(node) {
     let neighbours = getNeighbourAll(node.id)
     neighbours = sort_by_dist(neighbours)
     let nextNode = neighbours.shift()
-    Util.set_style(nextNode, { backgroundColor:`var(--path-color)`, border: `1px solid var(--path-color)` })
+    // Util.set_style(nextNode, { backgroundColor:`var(--path-color)`, border: `1px solid var(--path-color)`,
+    //                 animation:`path .5s ease` })
+    setTimeout(()=>{
+        Util.set_style(nextNode, { backgroundColor:`var(--path-color)`, border: `1px solid var(--path-color)`,
+                    animation:`path .5s ease` })
+    },nextNode.id)
     if (nextNode.dist == 1) {
         return
     }
