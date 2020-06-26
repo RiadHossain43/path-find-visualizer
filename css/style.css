@@ -351,4 +351,11 @@ video:focus{
         font-size: .8rem;
     }
 }
+@media screen and (max-width:412px){
 
+    .my-img{
+      
+        width: 90px;
+        height: 90px;
+    }
+}
