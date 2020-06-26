@@ -160,7 +160,7 @@ body{
 }
 a{
     text-decoration: none;
-    color: #EC407A;
+    color: #FF4081;
     border-radius: 3px ;
 }
 .instructions,.showinfo{
@@ -203,6 +203,10 @@ video{
     left: 40%;
     transform: translateX(-40%);
     margin: 1rem 0;
+    outline: none;
+}
+video:focus{
+    outline: none;
 }
 .video_des{
     text-align: center;
