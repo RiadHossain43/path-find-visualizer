@@ -45,7 +45,7 @@ body{
     left:50%;
     transform:translateX(-50%);
     display: grid;
-    background-color: #4DD0E1;
+    background-color: #B2EBF2;
     /* background-color: transparent; */
     border-bottom: 1px solid #C5CAE9;
     border-right: 1px solid #C5CAE9;
@@ -63,8 +63,8 @@ body{
 }
 
 .node{
-    border-top: 1px solid #26C6DA;
-    border-left: 1px solid #26C6DA;
+    border-top: 1px solid #80DEEA;
+    border-left: 1px solid #80DEEA;
     transition: .3s;
     display: flex;
     transition: .6s;
@@ -115,9 +115,10 @@ body{
     height: 9rem;
     border-radius: 50%;
     overflow: hidden;
+    border: 1px solid black;
 }
 .my-img>img{
-    width: 100%;
+    width: 110%;
 }
 .my-des{
     padding: 1rem;
@@ -156,6 +157,14 @@ a{
 }
 .step{
     margin: .5rem 0;
+}
+.social-links{
+    text-align: center;
+    margin: 1rem;
+}
+.social-link{
+    height: 2rem;
+    margin: .4rem;
 }
 video{
     position: relative;
@@ -249,7 +258,7 @@ video{
         /* height: 90vh; */
     }
     .features{
-        margin: .3rem 0;
+        margin: .3rem;
     }
     .btns,.output,.credit,.how{
         margin:0 auto;
