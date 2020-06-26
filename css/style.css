@@ -134,8 +134,8 @@ body{
     background:var(--cut-btns-active-colors);
 }
 .my-img{
-    width: 9em;
-    height: 9rem;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid black;
@@ -297,8 +297,10 @@ video{
         width: 85%;
     }
     .my-img{
-        width: 70px;
-        height: 70px;
+        /* width: 70px;
+        height: 70px; */
+        width: 120px;
+        height: 120px;
     }
 }
 @media screen and (max-width:768px){
