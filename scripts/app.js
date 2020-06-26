@@ -28,7 +28,7 @@ function setNodeSize() {
     }
     {
         container.height = Math.floor((window.innerHeight - heightbalance) / NODE_SIZE) * NODE_SIZE
-        container.width = Math.floor((window.innerWidth - 15) / NODE_SIZE) * NODE_SIZE
+        container.width = Math.floor((window.innerWidth - 10) / NODE_SIZE) * NODE_SIZE
     }
     Util.set_style(container, {
         height: `${container.height}px`, width: `${container.width}px`,
