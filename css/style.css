@@ -56,7 +56,7 @@ body{
 }
 .features{
     margin: .5rem 0;
-    padding: .5rem 0;
+    padding: .5rem 0 0 0;
     background-color: chartreuse;
     border-top: 1px solid black;
 }
@@ -248,7 +248,6 @@ video{
     }
     .features{
         margin: .3rem 0;
-        padding: .5rem;
     }
     .btns,.output,.credit,.how{
         margin:0 auto;
