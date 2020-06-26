@@ -57,7 +57,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
 
     function selection(e) {
-        if (!points.startSelected) {
+        if (!points.startSelected && !e.target.iswall) {
             Util.set_style(e.target, {border: '1px solid var(--path-color)' })
             e.target.style.backgroundImage = `url('./icons/start.svg')`
             points.startSelected = true
@@ -65,8 +65,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
             click.play()
             return
         }
-        if (points.startSelected && !points.endSelected) {
-            if (e.target !== NODES[START]) {
+        if (points.startSelected && !points.endSelected && !e.target.iswall && e.target !== NODES[START]) {
                 Util.set_style(e.target, {border: '1px solid var(--path-color)' })
                 e.target.style.backgroundImage = `url('./icons/destination.svg')`
                 points.endSelected = true
@@ -75,7 +74,6 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 console.log('START:', NODES[START].id, "END:", NODES[DESTINATION].id)
                 click.play()
                 return
-            }
         }
     }
     walls = handleDraw(container, NODES)
