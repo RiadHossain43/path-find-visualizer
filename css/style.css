@@ -22,7 +22,22 @@ body{
     -ms-user-select: none;
     user-select: none;
 }
-
+.centralize{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    padding: .5rem;
+    background-color: #333333;
+}
+.logo>img{
+    height: 1.5rem;
+}
 .container{
     position:absolute;
     left:50%;
@@ -30,7 +45,8 @@ body{
     display: grid;
     background-color: #4DD0E1;
     /* background-color: transparent; */
-    border: 1px solid #C5CAE9;
+    border-bottom: 1px solid #C5CAE9;
+    border-right: 1px solid #C5CAE9;
     cursor: pointer;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -39,12 +55,15 @@ body{
     margin: auto 0;
 }
 .features{
-    margin: .5rem;
-    height: 2.5rem;
+    margin: .5rem 0;
+    padding: .5rem 0;
+    background-color: chartreuse;
+    border-top: 1px solid black;
 }
 
 .node{
-    border: 1px solid #26C6DA;
+    border-top: 1px solid #26C6DA;
+    border-left: 1px solid #26C6DA;
     transition: .3s;
     display: flex;
     transition: .6s;
@@ -54,12 +73,12 @@ body{
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;  
 }
-.btns,.output,.credit{
+.btns,.output,.credit,.how{
     display: inline;
     padding: .4rem;
-    margin: .2rem;
+    margin:0 .6rem;
 }
-.btns,.back,.how{
+.btns,.helpback,.how,.infoback{
     outline: none;
     border: none;
     color: white;
@@ -71,29 +90,47 @@ body{
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;
 }
-.btns:active,.back:active,.how:active{
+.info{
+    height: 1.5rem;
+    margin:0 .5rem;
+}
+.information{
+    height: 85%;
+}
+.btns:active,.helpback:active,.how:active,.infoback:active{
     transform: scale(.9);
     background-color: #1A237E;
 }
 .how{
     background-color: #1A237E;
-    padding: .5rem;
 }
-.back{
+.helpback,.infoback{
     padding: .4rem;  
     background-color: #E91E63;
+}
+.my-img{
+    width: 9em;
+    height: 9rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.my-img>img{
+    width: 100%;
+}
+.my-des{
+    padding: 1rem;
+    color: white;
 }
 .credit{
     line-height:2;
 }
 a{
     text-decoration: none;
-    color: white;
+    color: darkorange;
     padding: .4rem;
     border-radius: 3px ;
-    background-color: #3F51B5;
 }
-.instructions{
+.instructions,.showinfo{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -106,6 +143,9 @@ a{
     transition: .4s;
     overflow: hidden;
     border-radius: 4px;
+}
+.showinfo{
+    font-size: 1rem;
 }
 .steps{
     color: white;
@@ -197,11 +237,8 @@ video{
 }
 
 @media screen and (max-width:992px){
-    .instructions{
-        width: 80%;
-    }
-    .features{
-        height: 3.5rem;
+    .instructions,.showinfo{
+        width: 85%;
     }
 }
 @media screen and (max-width:768px){
@@ -210,10 +247,13 @@ video{
         /* height: 90vh; */
     }
     .features{
-        margin: .5rem;
-        height: 5.5rem;
+        margin: .3rem 0;
+        padding: .5rem;
     }
-    .warning,.reset-notice{
+    .btns,.output,.credit,.how{
+        margin:0 auto;
+    }
+    .warning,.reset-notice,.path-error{
         padding: 1rem;
         font-size: 1rem;
     }
@@ -222,23 +262,22 @@ video{
         padding: .4rem;
         margin: 0;
     }
+    .my-des{
+        font-size: .9rem;
+    }
     a{
         padding: .2rem;
     }
     .steps{
         padding:0 1rem;
-        font-size: 1rem;
+        font-size: .9rem;
     }
     video{
         height: auto;
         width: 96%;
     }
     .video_des{
-        font-size: 1rem;
-    }
-    .how{
-        background-color: #1A237E;
-        padding: .2rem;
+        font-size: .8rem;
     }
 }
 

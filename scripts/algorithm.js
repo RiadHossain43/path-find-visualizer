@@ -26,7 +26,8 @@ function relaxNode(i, neighbours) {
             findTrack(found)
             return
         }
-        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)', animation: 'relax 1s ease', border: '1px solid #3F51B5' })
+        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',
+         animation: 'relax 1s ease', borderLeft: '1px solid #3F51B5',borderTop: '1px solid #3F51B5'})
 
     }, time + 100)
     time += inc
@@ -132,14 +133,14 @@ function findTrack(node) {
 function setFoundDist(t, bool) {
     time = t
     FOUND_DEST = bool
-    output.innerHTML = `MINIMUM DISTANCE:<span style="
-                            color:white;
-                            font-size:1rem;
-                            background-color:#3F51B5;
-                            border-radious: 3px;
-                            padding:.5rem;
-                            margin:.3rem;
-                            ">${0}</span>`
+    // output.innerHTML = `MINIMUM DISTANCE:<span style="
+    //                         color:white;
+    //                         font-size:1rem;
+    //                         background-color:#3F51B5;
+    //                         border-radious: 3px;
+    //                         padding:.5rem;
+    //                         margin:.3rem;
+    //                         ">${0}</span>`
 }
 
 function apply(inp) {
@@ -157,14 +158,14 @@ function apply(inp) {
         FOUND_DEST = true
         found = nextNode
         console.log("MIN DIST:", found.dist)
-        output.innerHTML = `MINIMUM DISTANCE:<span style="
-                            color:white;
-                            font-size:1rem;
-                            background-color:#3F51B5;
-                            border-radious: 3px;
-                            padding:.5rem;
-                            margin:.3rem;
-                            ">${found.dist}</span>`
+        // output.innerHTML = `MINIMUM DISTANCE:<span style="
+        //                     color:white;
+        //                     font-size:1rem;
+        //                     background-color:#3F51B5;
+        //                     border-radious: 3px;
+        //                     padding:.5rem;
+        //                     margin:.3rem;
+        //                     ">${found.dist}</span>`
         // found.innerHTML = `${found.dist}`
 
         return

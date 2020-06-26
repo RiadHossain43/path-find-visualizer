@@ -1,7 +1,7 @@
 import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
 import { seachPath, setFoundDist, animreset } from './algorithm.js'
-import { help , setwarning, resetNotice} from './help.js'
+import { help ,showinformation, setwarning, resetNotice} from './help.js'
 let START
 let DESTINATION
 let NODES = []
@@ -24,7 +24,7 @@ function setNodeSize() {
     }
     else {
         NODE_SIZE = 15
-        heightbalance = 50
+        heightbalance = 100
     }
     {
         container.height = Math.floor((window.innerHeight - heightbalance) / NODE_SIZE) * NODE_SIZE
@@ -116,6 +116,7 @@ function start() {
     clearDraw()
     setFoundDist(0, false)
     help()
+    showinformation()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
 
