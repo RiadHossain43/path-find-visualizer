@@ -165,9 +165,9 @@ a{
 }
 .instructions,.showinfo{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-40%);
     height: 0%;
     width: 50%;
     background: var(--popup-colors);
