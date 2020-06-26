@@ -21,6 +21,10 @@ let click = new Util.sound('./sounds/fire.mp3')
 window.addEventListener('load',()=>{
     setTimeout(() => {
         Util.set_style(logo,{height:'1.8rem'})
+        Util.set_style(container,{display:'grid'})
+        setTimeout(()=>{
+            Util.set_style(container,{opacity:1})
+        },10)
     },800);
 })
 
