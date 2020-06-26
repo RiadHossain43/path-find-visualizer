@@ -20,8 +20,8 @@ let click = new Util.sound('./sounds/fire.mp3')
 
 window.addEventListener('load',()=>{
     setTimeout(() => {
-        Util.set_style(logo,{height:'2rem'})
-    }, 2000);
+        Util.set_style(logo,{height:'1.8rem'})
+    }, 1500);
 })
 
 function setNodeSize() {
