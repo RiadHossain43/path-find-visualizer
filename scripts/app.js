@@ -32,7 +32,7 @@ function setNodeSize() {
     }
     else {
         NODE_SIZE = 14
-        heightbalance = 95
+        heightbalance = 100
     }
     {
         container.height = Math.floor((window.innerHeight - heightbalance) / NODE_SIZE) * NODE_SIZE
