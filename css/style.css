@@ -5,9 +5,11 @@
     --btn-colors: #26C6DA;
     --instruction-btn-color:#00ACC1;
     --btn-active-colors:#4DD0E1;
-    --path-color: #EC407A;
+    --path-color: #F06292;
     --node-color: #E0F7FA;
     --grid-border:#B2EBF2;
+    --search-path-color:#64FFDA;
+    --search-path-border:#1DE9B6;
     --popup-colors:linear-gradient(105deg,#00BCD4,#4DD0E1);
     --cut-btns-colors:#F48FB1;
     --cut-btns-active-colors:#D81B60;
@@ -29,6 +31,7 @@ body{
     width: 100%;
     overflow: hidden;
     position: fixed;
+    background-color: #FAFAFA;
     font-family: Roboto,'cursive';
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -81,7 +84,7 @@ body{
 .node{
     border-top: 1px solid var(--grid-border);
     border-left: 1px solid var(--grid-border);
-    transition: .3s;
+    transition: 2s;
     display: flex;
     transition: .6s;
     background-size: cover;
@@ -239,13 +242,18 @@ video{
         border-radius: 500%;
         transform: scale(.5);
     }
-    75%{
+    65%{
         background-color: #303F9F;
         border-radius: 25%;
         transform: scale(.75);
     }
+    85%{
+        background-color: var(--search-path-border);
+        border-radius: 25%;
+        transform: scale(.75);
+    }
     100%{
-        background-color: #3949AB;
+        background-color: var(--search-path-color);
         border-radius: 0%;
         transform: scale(1);
     }

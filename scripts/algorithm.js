@@ -26,8 +26,9 @@ function relaxNode(i, neighbours) {
             findTrack(found)
             return
         }
-        Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',
-         animation: 'relax var(--ralax-anim-duration) ease', borderLeft: '1px solid #3F51B5',borderTop: '1px solid #3F51B5'})
+        Util.set_style(NODES[i], { backgroundColor:'var(--search-path-color)', //rgba(30,136,229 ,1)
+         animation: 'relax var(--ralax-anim-duration) ease', borderLeft: '1px solid var(--search-path-border)',
+         borderTop: '1px solid var(--search-path-border)'})
 
     }, time + 100)
     time += inc
