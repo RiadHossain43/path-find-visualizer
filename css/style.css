@@ -1,4 +1,19 @@
 @import url('./fonts.css');
+
+:root{
+    --logo-container-color:#333333;
+    --btn-colors: #1DE9B6;
+    --btn-active-colors:#4DD0E1;
+    --path-color: #EC407A;
+    --node-color: #E0F7FA;
+    --grid-border:#B2EBF2;
+    --popup-colors:linear-gradient(105deg,#00ACC1,#4DD0E1);
+    --cut-btns-colors:#F48FB1;
+    --cut-btns-active-colors:#D81B60;
+    --ralax-anim-duration:1.2s;
+
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -33,7 +48,7 @@ body{
 }
 .logo{
     padding: .5rem;
-    background-color: #333333;
+    background: var(--logo-container-color);
     /* transition: 1s; */
 }
 .logo>img{
@@ -45,10 +60,10 @@ body{
     left:50%;
     transform:translateX(-50%);
     display: grid;
-    background-color: #B2EBF2;
+    background: var(--node-color);
     /* background-color: transparent; */
-    border-bottom: 1px solid #C5CAE9;
-    border-right: 1px solid #C5CAE9;
+    border-bottom: 1px solid  var(--grid-border);
+    border-right: 1px solid  var(--grid-border);
     cursor: pointer;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -63,8 +78,8 @@ body{
 }
 
 .node{
-    border-top: 1px solid #80DEEA;
-    border-left: 1px solid #80DEEA;
+    border-top: 1px solid var(--grid-border);
+    border-left: 1px solid var(--grid-border);
     transition: .3s;
     display: flex;
     transition: .6s;
@@ -74,18 +89,21 @@ body{
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;  
 }
-.btns,.output,.credit,.how{
+.btns,.output,.how{
     display: inline;
     padding: .4rem;
     margin:0 .6rem;
+    background: linear-gradient();
 }
 .btns,.helpback,.how,.infoback{
+    position: relative;
     outline: none;
     border: none;
     color: white;
-    background-color: rgba(48,63,159 ,1);
+    background: var(--btn-colors);
     border-radius: 3px;
     cursor: pointer;
+    overflow: hidden;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
@@ -97,18 +115,22 @@ body{
     cursor: pointer;
 }
 .information{
-    height: 85%;
+    height: 90%;
 }
-.btns:active,.helpback:active,.how:active,.infoback:active{
+.btns:active,.how:active{
     transform: scale(.9);
-    background-color: #1A237E;
+    background: var(--btn-active-colors);
 }
 .how{
-    background-color: #1A237E;
+    background: var(--btn-colors);
 }
 .helpback,.infoback{
     padding: .4rem;  
-    background-color: #E91E63;
+    background-color:var(--cut-btns-colors);
+}
+.helpback:active,.infoback:active{
+    transform: scale(.9);
+    background:var(--cut-btns-active-colors);
 }
 .my-img{
     width: 9em;
@@ -124,8 +146,13 @@ body{
     padding: 1rem;
     color: white;
 }
-.credit{
-    line-height:2;
+.ripple{
+    position: absolute;
+    background: white;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: buttonhover .5s linear infinite;
 }
 a{
     text-decoration: none;
@@ -140,7 +167,7 @@ a{
     transform: translate(-50%,-50%);
     height: 0%;
     width: 50%;
-    background-color: #3F51B5;
+    background: var(--popup-colors);
     display: none;
     padding: 1rem;
     transition: .4s;
@@ -164,7 +191,7 @@ a{
 }
 .social-link{
     height: 2rem;
-    margin: .4rem;
+    margin:.4rem;
 }
 video{
     position: relative;
@@ -186,11 +213,15 @@ video{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: #3F51B5;
+    background: var(--popup-colors);
     color: white;
     display: none;
     transition: .5s;
     border-radius: 4px;
+}
+.contact{
+    margin: .2rem;
+    padding: auto 0;
 }
 
 @keyframes relax{
@@ -230,11 +261,14 @@ video{
 }
 @keyframes grid1{
     0%{
-       transform: scale(1);
+       transform: scale(0);
+       border-radius: 100%;
     }50%{
-       transform: scale(1.5);
+       transform: scale(.5);
+       border-radius: 50%;
     }100%{
         transform: scale(1);
+        border-radius:0;
     }
 }
 @keyframes grid2{
@@ -246,6 +280,17 @@ video{
         transform: scale(1);
     }
 }
+@keyframes buttonhover{
+    0%{
+        width: 0;
+        height: 0;
+        opacity: .8;
+    }100%{
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
+}
 
 @media screen and (max-width:992px){
     .instructions,.showinfo{
@@ -253,6 +298,9 @@ video{
     }
 }
 @media screen and (max-width:768px){
+    :root{
+        --ralax-anim-duration:.7s;
+    }
     body{
        font-size: .8rem;
         /* height: 90vh; */
@@ -266,11 +314,6 @@ video{
     .warning,.reset-notice,.path-error{
         padding: 1rem;
         font-size: 1rem;
-    }
-    .credit{
-        display: block;
-        padding: .4rem;
-        margin: 0;
     }
     .my-des{
         font-size: .9rem;

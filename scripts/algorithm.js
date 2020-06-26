@@ -27,7 +27,7 @@ function relaxNode(i, neighbours) {
             return
         }
         Util.set_style(NODES[i], { backgroundColor: 'rgba(30,136,229 ,1)',
-         animation: 'relax 1s ease', borderLeft: '1px solid #3F51B5',borderTop: '1px solid #3F51B5'})
+         animation: 'relax var(--ralax-anim-duration) ease', borderLeft: '1px solid #3F51B5',borderTop: '1px solid #3F51B5'})
 
     }, time + 100)
     time += inc
@@ -124,7 +124,7 @@ function findTrack(node) {
     let neighbours = getNeighbourAll(node.id)
     neighbours = sort_by_dist(neighbours)
     let nextNode = neighbours.shift()
-    Util.set_style(nextNode, { backgroundColor: '#EC407A', border: '1px solid #EC407A' })
+    Util.set_style(nextNode, { backgroundColor:`var(--path-color)`, border: `1px solid var(--path-color)` })
     if (nextNode.dist == 1) {
         return
     }

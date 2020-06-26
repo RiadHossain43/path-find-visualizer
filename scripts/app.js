@@ -21,7 +21,7 @@ let click = new Util.sound('./sounds/fire.mp3')
 window.addEventListener('load',()=>{
     setTimeout(() => {
         Util.set_style(logo,{height:'1.8rem'})
-    }, 1500);
+    },800);
 })
 
 function setNodeSize() {
@@ -58,7 +58,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
     function selection(e) {
         if (!points.startSelected) {
-            Util.set_style(e.target, { backgroundColor: '#EC407A', border: '1px solid black' })
+            Util.set_style(e.target, { backgroundColor: `var(--path-color)`, border: '1px solid black' })
             e.target.style.backgroundImage = `url('./icons/start.svg')`
             points.startSelected = true
             START = e.target.id
@@ -67,7 +67,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
         }
         if (points.startSelected && !points.endSelected) {
             if (e.target !== NODES[START]) {
-                Util.set_style(e.target, { backgroundColor: '#EC407A', border: '1px solid black' })
+                Util.set_style(e.target, { backgroundColor:`var(--path-color)`, border: '1px solid black' })
                 e.target.style.backgroundImage = `url('./icons/destination.svg')`
                 points.endSelected = true
                 points.walldrawable = true
