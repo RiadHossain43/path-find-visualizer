@@ -13,8 +13,16 @@ const container = Util.eleQRY('.container')
 const buttons = Util.eleCls('btns')
 const algo_btn = buttons[0]
 const reset_btn = buttons[1]
+const logo = Util.eleQRY('.logo>img')
 
 let click = new Util.sound('./sounds/fire.mp3')
+
+
+window.addEventListener('load',()=>{
+    setTimeout(() => {
+        Util.set_style(logo,{height:'2rem'})
+    }, 2000);
+})
 
 function setNodeSize() {
     let NODE_SIZE, heightbalance

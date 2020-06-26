@@ -34,9 +34,11 @@ body{
 .logo{
     padding: .5rem;
     background-color: #333333;
+    /* transition: 1s; */
 }
 .logo>img{
-    height: 1.5rem;
+    height: 10rem;
+    transition: .5s;
 }
 .container{
     position:absolute;
