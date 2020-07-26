@@ -16,7 +16,7 @@ function relaxNode(i, neighbours) {
     let tid
     for (let j = 0; j < neighbours.length; j++) {
         if (NODES[i].dist + 1 <= neighbours[j].dist) {
-            neighbours[j].dist = NODES[i].dist + 1
+            neighbours[j].dist = NODES[i].dist + 1  // cost of every node is assumed 1 
         }
     }
     NODES[i].relaxed = true
@@ -26,7 +26,7 @@ function relaxNode(i, neighbours) {
             findTrack(found)
             return
         }
-        Util.set_style(NODES[i], { backgroundColor:'var(--search-path-color)', //rgba(30,136,229 ,1)
+        Util.set_style(NODES[i], { backgroundColor:'var(--search-path-color)',
          animation: 'relax var(--ralax-anim-duration) ease', borderLeft: '1px solid var(--search-path-border)',
          borderTop: '1px solid var(--search-path-border)'})
 
