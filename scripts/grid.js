@@ -3,17 +3,17 @@ import { START, DESTINATION } from './app.js'
 let click = new Util.sound('./sounds/fire.mp3')
 function generateGrid(container, NODE_SIZE) {
     let NODE = []
-    let gridanim = ['grid1','grid2']
-    let t
+    // let gridanim = ['grid1','grid2']
+    // let t
     for (var row = 0; row < container.height / NODE_SIZE; row++) {
         for (var col = 0; col < container.width / NODE_SIZE; col++) {
             let node = Util.crtEle('div')
             node.setAttribute('draggable', false)
             {
                 node.row = row, node.col = col,
-                    node.relaxed = false, node.dist = Infinity,
-                    node.id = row * container.width / NODE_SIZE + col,
-                    node.iswall = false
+                node.relaxed = false, node.dist = Infinity,
+                node.id = row * container.width / NODE_SIZE + col,
+                node.iswall = false
             }
             Util.addStyel(node, 'node')
             container.append(node)
@@ -25,12 +25,15 @@ function generateGrid(container, NODE_SIZE) {
 
 
 
+
+
+
 function handleDraw(container, NODES) {
     let mouse = {
         ispressed: false,
     }
 
-    function wall1(e){
+    function mouseHoverDrawWall_Pc(e){
         
             let ele
             ele = document.elementFromPoint(e.clientX, e.clientY)
@@ -40,7 +43,7 @@ function handleDraw(container, NODES) {
                 // click.play()
             }
     }
-    function wall2(e){
+    function mouseHoverDrawWall_Phn(e){
        
             let ele
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
@@ -50,7 +53,7 @@ function handleDraw(container, NODES) {
                 // click.play()
             }
     }
-    function wall3(e){
+    function mousePressDrawWall_Pc_Phn(e){
        
         mouse.ispressed = true
         // console.log("MuseDown:", mouse.ispressed)
@@ -62,27 +65,63 @@ function handleDraw(container, NODES) {
             // click.play()
         }
     }
-    function wall4(e){
+    function mouseNotPressed_Pc_Phn(e){
         mouse.ispressed = false
         // console.log("MuseDown:", mouse.ispressed)
     }
-    function wall5(e){
+    function TouchStart_Phn(e){
         mouse.ispressed = true
         // console.log("MuseDown:", mouse.ispressed)
     }
 
     function drawAble(container, NODES, mouse) {
         if (window.innerWidth > 768) {
-            container.addEventListener('mouseover',wall1)
+            container.addEventListener('mouseover',mouseHoverDrawWall_Pc)
         } else {
-            container.addEventListener('touchmove', wall2)
+            container.addEventListener('touchmove', mouseHoverDrawWall_Phn)
         }
     }
-    window.addEventListener('mousedown',wall3)
-    window.addEventListener('mouseup', wall4)
-    window.addEventListener('touchstart', wall5)
-    window.addEventListener('touchend',wall4)
+    window.addEventListener('mousedown',mousePressDrawWall_Pc_Phn)
+    window.addEventListener('mouseup', mouseNotPressed_Pc_Phn)
+    window.addEventListener('touchstart', TouchStart_Phn)
+    window.addEventListener('touchend',mouseNotPressed_Pc_Phn)
     drawAble(container, NODES, mouse)
-    return {wall1,wall2,wall3,wall4,wall5}
+
+    return {
+            mouseHoverDrawWall_Pc,
+            mouseHoverDrawWall_Phn,
+            mousePressDrawWall_Pc_Phn,
+            mouseNotPressed_Pc_Phn,
+            TouchStart_Phn
+        }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export { generateGrid, handleDraw}

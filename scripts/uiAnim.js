@@ -1,6 +1,5 @@
 import * as Util from './util.js'
 const buttons = Util.eleQRYAll('button')
-// console.log(buttons)
 
 buttons.forEach(btn => {
     btn.addEventListener('click',function(e){

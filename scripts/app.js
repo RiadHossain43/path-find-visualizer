@@ -2,11 +2,12 @@ import * as Util from './util.js'
 import { generateGrid, handleDraw } from './grid.js'
 import { seachPath, setFoundDist, animreset } from './algorithm.js'
 import { help ,showinformation, setwarning, resetNotice} from './help.js'
+
 let START
 let DESTINATION
 let NODES = []
 let listeners
-let walls
+let m_events
 let FOUND_DEST = false
 
 const container = Util.eleQRY('.container')
@@ -25,7 +26,7 @@ window.addEventListener('load',()=>{
         setTimeout(()=>{
             Util.set_style(container,{opacity:1})
         },10)
-    },800);
+    },50);
 })
 
 function setNodeSize() {
@@ -54,7 +55,7 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
     let points = {
         startSelected: startSelected,
         endSelected: endSelected,
-        walldrawable: walldrawable
+        walldrawable: walldrawable //currently not used
     }
     // console.log(points.walldrawable)
     container.addEventListener('mousedown', selection)
@@ -62,16 +63,18 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
 
     function selection(e) {
         if (!points.startSelected && !e.target.iswall) {
-            Util.set_style(e.target, {border: '1px solid var(--path-color)' })
-            e.target.style.backgroundImage = `url('./icons/start.svg')`
+            Util.set_style(e.target, {border: '1px solid var(--path-color)',
+                backgroundImage:`url('./icons/start.svg')` })
+            
             points.startSelected = true
             START = e.target.id
             click.play()
             return
         }
         if (points.startSelected && !points.endSelected && !e.target.iswall && e.target !== NODES[START]) {
-                Util.set_style(e.target, {border: '1px solid var(--path-color)' })
-                e.target.style.backgroundImage = `url('./icons/destination.svg')`
+                Util.set_style(e.target, {border: '1px solid var(--path-color)',
+                    backgroundImage:`url('./icons/destination.svg')`})
+               
                 points.endSelected = true
                 points.walldrawable = true
                 DESTINATION = e.target.id
@@ -80,9 +83,9 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
                 return
         }
     }
-    walls = handleDraw(container, NODES)
+    m_events = handleDraw(container, NODES)
 
-    return { selection, walls }
+    return { selection, m_events }
 
 }
 
@@ -108,13 +111,14 @@ function clearDraw() {
     if (listeners != undefined) {
         // console.log(listeners.selection, listeners.walls)
         container.removeEventListener('mousedown', listeners.selection)
-        if (listeners.walls != undefined) {
-            container.removeEventListener('mouseover', listeners.walls.wall1)
-            container.removeEventListener('touchmove', listeners.walls.wall2)
-            window.removeEventListener('mousedown', listeners.walls.wall3)
-            window.removeEventListener('mouseup', listeners.walls.wall4)
-            window.removeEventListener('touchstart', listeners.walls.wall5)
-            window.removeEventListener('touchend', listeners.walls.wall4)
+        if (listeners.m_events != undefined) {
+        
+            container.removeEventListener('mouseover', listeners.m_events.mouseHoverDrawWall_Pc)
+            container.removeEventListener('touchmove', listeners.m_events.mouseHoverDrawWall_Phn)
+            window.removeEventListener('mousedown', listeners.m_events.mousePressDrawWall_Pc_Phn)
+            window.removeEventListener('mouseup', listeners.m_events.mouseNotPressed_Pc_Phn)
+            window.removeEventListener('touchstart', listeners.m_events.TouchStart_Phn)
+            window.removeEventListener('touchend', listeners.m_events.mouseNotPressed_Pc_Phn)
         }
     }
 }
