@@ -36,7 +36,7 @@ function setNodeSize() {
         heightbalance = 110
     }
     else {
-        NODE_SIZE = 20   // stable 14
+        NODE_SIZE = 17   // lowest  14 heighst 21
         heightbalance = 100
     }
     {
