@@ -10,7 +10,7 @@ const output = Util.eleQRY('.output')
 let inc
 
 if (window.innerWidth < 768) inc = 8
-else inc = 6
+else inc = 5
 
 function relaxNode(i, neighbours) {
     let tid
