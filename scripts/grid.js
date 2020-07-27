@@ -38,7 +38,7 @@ function handleDraw(container, NODES) {
             let ele
             ele = document.elementFromPoint(e.clientX, e.clientY)
             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
-                Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
+                Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .3s ease'})
                 ele.iswall = true
                 // click.play()
             }
@@ -48,7 +48,7 @@ function handleDraw(container, NODES) {
             let ele
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
-                Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
+                Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .3s ease'})
                 ele.iswall = true
                 // click.play()
             }
@@ -60,7 +60,7 @@ function handleDraw(container, NODES) {
         let ele
         ele = document.elementFromPoint(e.clientX, e.clientY)
         if ((mouse.ispressed) && (ele != NODES[START] && ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
-            Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .5s ease'})
+            Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall .3s ease'})
             ele.iswall = true
             // click.play()
         }

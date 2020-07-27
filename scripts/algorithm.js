@@ -9,7 +9,7 @@ const output = Util.eleQRY('.output')
 // let path = new Util.sound('./sounds/spread.mp3')
 let inc
 
-if (window.innerWidth < 768) inc = 20
+if (window.innerWidth < 768) inc = 8
 else inc = 6
 
 function relaxNode(i, neighbours) {
@@ -30,7 +30,7 @@ function relaxNode(i, neighbours) {
          animation: 'relax var(--ralax-anim-duration) ease', borderLeft: '1px solid var(--search-path-border)',
          borderTop: '1px solid var(--search-path-border)'})
 
-    }, time + 100)
+    }, time + 0)
     time += inc
     timeouts.push(tid)
     return neighbours
