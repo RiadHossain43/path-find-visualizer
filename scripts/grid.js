@@ -32,13 +32,12 @@ function handleDraw(container, NODES) {
     let mouse = {
         ispressed: false,
     }
-
     function mouseHoverDrawWall_Pc(e){
         
             let ele
             ele = document.elementFromPoint(e.clientX, e.clientY)
             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
-                Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall 1s ease'})
+                Util.set_style(ele, { backgroundColor: '#5e6c84',border:'1px solid #5e6c84',animation:'wall 1s ease'})
                 ele.iswall = true
                 // click.play()
             }
@@ -48,7 +47,7 @@ function handleDraw(container, NODES) {
             let ele
             ele = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
             if ((mouse.ispressed) && ele != NODES[START] && ele != NODES[DESTINATION] && ele.classList.contains('node')) {
-                Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall 1s ease'})
+                Util.set_style(ele, { backgroundColor: '#5e6c84',border:'1px solid #5e6c84',animation:'wall 1s ease'})
                 ele.iswall = true
                 // click.play()
             }
@@ -56,22 +55,18 @@ function handleDraw(container, NODES) {
     function mousePressDrawWall_Pc_Phn(e){
        
         mouse.ispressed = true
-        // console.log("MuseDown:", mouse.ispressed)
         let ele
         ele = document.elementFromPoint(e.clientX, e.clientY)
         if ((mouse.ispressed) && (ele != NODES[START] && ele != NODES[DESTINATION]) && ele.classList.contains('node')) {
-            Util.set_style(ele, { backgroundColor: 'black',border:'1px solid black',animation:'wall 1s ease'})
+            Util.set_style(ele, { backgroundColor: '#5e6c84',border:'1px solid #5e6c84',animation:'wall 1s ease'})
             ele.iswall = true
-            // click.play()
         }
     }
     function mouseNotPressed_Pc_Phn(e){
         mouse.ispressed = false
-        // console.log("MuseDown:", mouse.ispressed)
     }
     function TouchStart_Phn(e){
         mouse.ispressed = true
-        // console.log("MuseDown:", mouse.ispressed)
     }
 
     function drawAble(container, NODES, mouse) {

@@ -57,7 +57,6 @@ function selectStartToEnd(startSelected, endSelected, walldrawable) {
         endSelected: endSelected,
         walldrawable: walldrawable //currently not used
     }
-    // console.log(points.walldrawable)
     container.addEventListener('mousedown', selection)
 
 
@@ -109,10 +108,8 @@ function clearNodes() {
 }
 function clearDraw() {
     if (listeners != undefined) {
-        // console.log(listeners.selection, listeners.walls)
         container.removeEventListener('mousedown', listeners.selection)
         if (listeners.m_events != undefined) {
-        
             container.removeEventListener('mouseover', listeners.m_events.mouseHoverDrawWall_Pc)
             container.removeEventListener('touchmove', listeners.m_events.mouseHoverDrawWall_Phn)
             window.removeEventListener('mousedown', listeners.m_events.mousePressDrawWall_Pc_Phn)
@@ -125,7 +122,6 @@ function clearDraw() {
 
 // initializing....
 function start() {
-
     clearNodes()
     clearDraw()
     setFoundDist(0, false)
@@ -133,10 +129,8 @@ function start() {
     showinformation()
     let NODE_SIZE = setNodeSize()
     NODES = generateGrid(container, NODE_SIZE)
-
     listeners = selectStartToEnd(false, false, false)
     startAlgorithm(FOUND_DEST)
-
 }
 start()
 
